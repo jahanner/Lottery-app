@@ -16,18 +16,10 @@ export default class EntryForm extends React.Component {
   render() {
     return (
       <div>
-        <form
-          className='entry-form-submit'
-          onSubmit={undefined}>
-          <label
-            className='user-email'
-            type='email'>Email:
-          </label>
+        <form className='entry-form-submit' onSubmit={undefined}>
+          <label className='user-email' type='email'>Email: </label>
           <input type='email' name='email'/>
-          <label
-            className='user-name'
-            type='text'>Name:
-          </label>
+          <label className='user-name' type='text'>Name: </label>
           <input type='text' name='name'/>
           <button className='button'>Submit</button>
         </form>
