@@ -16,7 +16,10 @@ class App extends Component {
         <div>
           <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to Lottery App</h1>
+          <div className='title/odds'>
+            <h1 className="App-title">Welcome to Lottery App</h1>
+            <h3>Your odds of winning are: 1:1</h3>
+          </div>
           <div className='Clock'>
             <Clock deadline={this.state.deadline}/>
           </div>

@@ -19,6 +19,7 @@ export default class EntryForm extends React.Component {
   render() {
     return (
       <div>
+        {this.state.error && <p className='add-option-error'>{this.state.error}</p>}
         <form className='entry-form-submit' onSubmit={this.handleAddOption}>
           <label className='user-email' type='email'>Email: </label>
           <input type='email' name='email'/>
