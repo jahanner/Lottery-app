@@ -8,6 +8,7 @@ class Clock extends Component {
                hours: 0,
                minutes: 0,
                seconds: 0,
+               text: ""
           };
      }
      componentWillMount() {
@@ -22,7 +23,7 @@ class Clock extends Component {
      getTimeUntil(deadline) {
           const time = Date.parse(deadline) - Date.parse(new Date());
           if(time < 0) {
-               this.setState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+               this.setState({ text: "The time has come!" });
 
           } else {
                const seconds = Math.floor((time/1000)%60);
@@ -46,6 +47,9 @@ class Clock extends Component {
                     </div>
                     <div className="Clock-seconds">
                          {this.leading0(this.state.seconds)} Seconds
+                    </div>
+                    <div>
+                      <p>{this.state.text}</p>
                     </div>
                </div>
           );
