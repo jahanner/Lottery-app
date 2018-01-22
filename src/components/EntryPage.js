@@ -3,11 +3,12 @@ import logo from '../images/logo-circle.png';
 import EntryForm from './entry-form.js';
 import Clock from './countdown-timer.js';
 import '../styles/App.css';
+import Header from './Header.js';
 
-class App extends Component {
+class EntryPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {deadline: 'January, 20, 2018'};
+    this.state = {deadline: 'January, 27, 2018'};
   }
 
   render() {
@@ -26,6 +27,7 @@ class App extends Component {
           </header>
         </div>
         <div>
+          <Header />
           <h2 className="Prize-Description">Prize Description Here...</h2>
           <p className="App-intro">
           To get started, enter your info.
@@ -37,4 +39,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default EntryPage;

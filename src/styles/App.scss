@@ -4,7 +4,7 @@
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  height: 90px;
 }
 
 .App-header {
@@ -30,7 +30,7 @@
   border-bottom: 1px solid black;
 }
 
-.App-header Clock {
+.Clock {
   color: white;
 }
 
@@ -40,5 +40,16 @@
 }
 
 .button {
+  background-color: #8357c5;
+  border: none;
+  border-bottom: solid 3px darken(#8357c5, 10%);
+  border-left: solid 3px darken(#8357c5, 10%);
+  color: white;
+  margin-left: 1rem;
+  font-size: 1.5rem;
+}
 
+.entry-form-submit {
+  flex-grow: 1;
+  font-size: 1.5rem
 }

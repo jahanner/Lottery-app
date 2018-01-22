@@ -3,7 +3,7 @@
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 80px; }
+  height: 90px; }
 
 .App-header {
   background-color: black;
@@ -24,7 +24,7 @@
   padding: 0 0 20px;
   border-bottom: 1px solid black; }
 
-.App-header Clock {
+.Clock {
   color: white; }
 
 @keyframes App-logo-spin {
@@ -32,3 +32,16 @@
     transform: rotate(0deg); }
   to {
     transform: rotate(360deg); } }
+
+.button {
+  background-color: #8357c5;
+  border: none;
+  border-bottom: solid 3px #693cad;
+  border-left: solid 3px #693cad;
+  color: white;
+  margin-left: 1rem;
+  font-size: 1.5rem; }
+
+.entry-form-submit {
+  flex-grow: 1;
+  font-size: 1.5rem; }
