@@ -34,10 +34,10 @@
     transform: rotate(360deg); } }
 
 .button {
-  background-color: #8357c5;
+  background-color: #106fbe;
   border: none;
-  border-bottom: solid 3px #693cad;
-  border-left: solid 3px #693cad;
+  border-bottom: solid 3px #0c548f;
+  border-left: solid 3px #0c548f;
   color: white;
   margin-left: 1rem;
   font-size: 1.5rem; }
