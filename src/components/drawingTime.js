@@ -1,46 +1,63 @@
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
+import moment from "moment";
 import { SingleDatePicker } from "react-dates";
 import React from "react";
 
-export default class lotterySetUp extends React.Component {
-  state = {
-    error: undefined,
-    date: null,
-    focused: false
+const now = moment();
+console.log(now.format("MMM, Do, YYYY"));
+
+export default class LotterySetUp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: "",
+      calendarFocused: false,
+      date: props.lottery ? moment(props.lottery.date) : moment(),
+      prizeDescription: ""
+    };
+  }
+  onDateChange = date => {
+    if (date) {
+      this.setState(() => ({ date }));
+    }
+  };
+
+  onFocusChange = ({ focused }) => {
+    this.setState(() => ({ calendarFocused: focused }));
   };
 
   handleAddOption = e => {
     e.preventDefault();
-    const option = e.target.elements.option.value.trim();
-    const error = this.props.handleAddOption(option);
-
-    this.setState(() => ({ error }));
-
-    if (!error) {
-      e.target.elements.option.value = "";
+    if (!this.state.prizeDescription || !this.state.date) {
+      this.setState(() => ({ error: "Please provide description and date" }));
+    } else {
+      this.setState(() => ({ error: "" }));
+      this.props.onSubmit({
+        date: this.state.date.valueOf(),
+        prizeDescription: this.state.prizeDescription
+      });
     }
   };
 
   render() {
     return (
       <div>
-        {this.state.error && (
-          <p className="add-option-error">{this.state.error}</p>
-        )}
+        {this.state.error && <p>{this.state.error}</p>}
         <form className="entry-form-submit" onSubmit={this.handleAddOption}>
           <label className="prize-description" type="text">
-            {" "}
-            Prize Description:{" "}
+            Prize Description:
           </label>
           <input type="text" name="prize" />
+          <label className="date" type="text">
+            Drawing Date:
+          </label>
           <SingleDatePicker
             date={this.state.date}
-            onDateChange={date => this.setState({ date })}
-            focused={this.state.focused}
-            onFocusChange={({ focused }) => this.setState({ focused })}
+            onDateChange={this.onDateChange}
+            focused={this.state.calendarFocused}
+            onFocusChange={this.onFocusChange}
             numberOfMonths={1}
-            isOutsideRange={() => false}
           />
           <button className="button">Submit</button>
         </form>

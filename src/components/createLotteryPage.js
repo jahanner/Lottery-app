@@ -4,7 +4,6 @@ import { SingleDatePicker } from "react-dates";
 import React, { Component } from "react";
 import logo from "../images/logo-circle.png";
 import DrawingTime from "./drawingTime.js";
-import Clock from "./countdown-timer.js";
 import "../styles/App.css";
 import Header from "./Header.js";
 
@@ -27,14 +26,11 @@ class CreateApp extends Component {
         </div>
         <div>
           <Header />
-          <h2 className="Prize-Description">
-            Enter Prize Description and Drawing Time
-          </h2>
+          <h2 className="Prize-Description">Enter Lottery App info here</h2>
         </div>
         <DrawingTime />
       </div>
     );
   }
 }
-
 export default CreateApp;
