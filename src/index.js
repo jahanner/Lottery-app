@@ -7,14 +7,33 @@ import registerServiceWorker from "./registerServiceWorker";
 import configureStore from "./store/configureStore";
 import { createStore, combineReducers } from "redux";
 import drawingDateReducer from "./reducers/lottery";
+import filtersReducer from "./reducers/filtersReducer.js";
+import { addLotteryApp, filtersAction } from "./actions/lottery.js";
 
-// const store = configureStore();
 const store = createStore(
   combineReducers({
-    lottery: drawingDateReducer
+    lottery: drawingDateReducer,
+    filters: filtersReducer
   })
 );
-console.log(store.getState());
+
+store.subscribe(() => {
+  console.log(store.getState());
+});
+
+store.dispatch(
+  addLotteryApp({
+    prizeDescription: "working",
+    winnerMessage: "yes",
+    drawingDate: 4
+  })
+);
+store.dispatch(
+  filtersAction({
+    text: "text",
+    date: "success"
+  })
+);
 
 const jsx = (
   <Provider store={store}>

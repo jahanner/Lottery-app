@@ -1,34 +1,23 @@
 import uuid from "uuid";
 
-//SET DATE and WINNER note
-//
-
 export const addLotteryApp = ({
-  prizeDescription = "",
-  createdAt = 0,
-  drawingTime = 0
+  prizeDescription,
+  drawingDate = 0,
+  winnerMessage
 } = {}) => ({
   type: "ADD_LOTTERY_APP",
-  lotteryInfo: {
+  payload: {
     id: uuid(),
     prizeDescription,
-    createdAt,
-    drawingTime
+    drawingDate,
+    winnerMessage
   }
 });
 
-export const description = ({ prizeDescription, winnerMessage } = {}) => ({
-  type: "PRIZE_DESCRIPTION",
-  prizeDescription,
-  winnerMessage
-});
-
-export const user = ({ email }) => ({
-  type: "USER",
-  email
-});
-
-export const drawDate = ({ date }) => ({
-  type: "DRAWING_DATE",
-  date
+export const filtersAction = ({ text, date } = {}) => ({
+  type: "FILTERS",
+  payload: {
+    text,
+    date
+  }
 });
