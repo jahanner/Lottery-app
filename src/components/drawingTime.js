@@ -1,8 +1,8 @@
 import "react-dates/initialize";
-import "react-dates/lib/css/_datepicker.css";
 import moment from "moment";
 import { SingleDatePicker } from "react-dates";
 import React from "react";
+import "react-dates/lib/css/_datepicker.css";
 
 const now = moment();
 console.log(now.format("MMM, Do, YYYY"));
@@ -14,7 +14,8 @@ export default class LotterySetUp extends React.Component {
       error: "",
       calendarFocused: false,
       date: props.lottery ? moment(props.lottery.date) : moment(),
-      prizeDescription: ""
+      prizeDescription: props.lottery ? props.lottery.prizeDescription : "",
+      winnerMessage: ""
     };
   }
   onDateChange = date => {

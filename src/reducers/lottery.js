@@ -1,15 +1,29 @@
-import React from "react";
-import { createStore } from "redux";
+const lotteryReducerDefaultState = {
+  date: 0,
+  prizeDescription: "",
+  winnerMessage: "",
+  userEmail: "",
+  lotteryID: 0
+};
 
-const date = "January tho";
-
-const drawingDateReducer = (state = {}, action) => {
+export default (state = lotteryReducerDefaultState, action) => {
   switch (action.type) {
-    case "SET_DRAWING_DATE":
-      return { drawDate: date };
+    case "DRAWING_DATE":
+      return [...state, action.date];
+    case "PRIZE_DESCRIPTION":
+      return [...state, action.prizeDescription, action.winnerMessage];
     default:
       return state;
   }
 };
 
-export default drawingDateReducer;
+// const demoState = {
+//   lottery: [
+//     {
+//       id: "alksjdlak",
+//       prizeDescription: "alsdjalksd",
+//       drawDate: 0,
+//       email: "lke@alks.com"
+//     }
+//   ]
+// };
