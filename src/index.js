@@ -22,15 +22,23 @@ store.subscribe(() => {
 });
 
 store.dispatch(
+  filtersAction({
+    text: "text",
+    date: "success"
+  })
+);
+
+store.dispatch(
   addLotteryApp({
     prizeDescription: "working",
     winnerMessage: "yes",
     drawingDate: 4
   })
 );
+
 store.dispatch(
   filtersAction({
-    text: "text",
+    text: "test2",
     date: "success"
   })
 );

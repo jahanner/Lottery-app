@@ -1,6 +1,6 @@
 const filtersReducerDefaultState = {
   text: "",
-  date: "hgkj"
+  date: ""
 };
 export default (state = filtersReducerDefaultState, action) => {
   switch (action.type) {

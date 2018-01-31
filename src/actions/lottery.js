@@ -1,9 +1,10 @@
 import uuid from "uuid";
 
 export const addLotteryApp = ({
-  prizeDescription,
-  drawingDate = 0,
-  winnerMessage
+  drawingDate = undefined,
+  prizeDescription = "",
+  winnerMessage = "",
+  userEmail = ""
 } = {}) => ({
   type: "ADD_LOTTERY_APP",
   payload: {

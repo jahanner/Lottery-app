@@ -1,12 +1,6 @@
 import uuid from "uuid";
 
-const lotteryReducerDefaultState = {
-  drawingDate: 0,
-  prizeDescription: "",
-  winnerMessage: "",
-  userEmail: "",
-  lotteryID: uuid()
-};
+const lotteryReducerDefaultState = {};
 
 export default (state = lotteryReducerDefaultState, action) => {
   switch (action.type) {
