@@ -4,12 +4,13 @@ import EntryForm from "./entry-form.js";
 import Clock from "./countdown-timer.js";
 import "../styles/App.css";
 import Header from "./Header.js";
+import { connect } from "react-redux";
 
 class EntryPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { deadline: "January, 27, 2018" };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = { deadline: "February, 3, 2018" };
+  // }
 
   render() {
     return (
@@ -22,7 +23,8 @@ class EntryPage extends Component {
               <h3>Your odds of winning are: 1:1</h3>
             </div>
             <div className="Clock">
-              <Clock deadline={this.state.deadline} />
+              {/* <Clock deadline={this.props.deadline} /> */}
+              <Clock deadline={this.props.deadline} />
             </div>
           </header>
         </div>
@@ -37,4 +39,10 @@ class EntryPage extends Component {
   }
 }
 
-export default EntryPage;
+const mapStateToProps = state => {
+  return {
+    deadline: state.date
+  };
+};
+export default connect(mapStateToProps)(EntryPage);
+// export default EntryPage;

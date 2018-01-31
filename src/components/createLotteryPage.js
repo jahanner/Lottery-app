@@ -1,6 +1,6 @@
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
-import { SingleDatePicker } from "react-dates";
+// import { SingleDatePicker } from "react-dates";
 import React, { Component } from "react";
 import logo from "../images/logo-circle.png";
 import DrawingTime from "./drawingTime.js";

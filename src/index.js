@@ -4,16 +4,15 @@ import { Provider } from "react-redux";
 import "./styles/index.css";
 import AppRouter from "./components/AppRouter.js";
 import registerServiceWorker from "./registerServiceWorker";
-import configureStore from "./store/configureStore";
 import { createStore, combineReducers } from "redux";
-import drawingDateReducer from "./reducers/lottery";
-import filtersReducer from "./reducers/filtersReducer.js";
-import { addLotteryApp, filtersAction } from "./actions/lottery.js";
+import lotteryReducer from "./reducers/lottery";
+import dateReducer from "./reducers/dateReducer.js";
+import { addLotteryApp, dateAction } from "./actions/lottery.js";
 
 const store = createStore(
   combineReducers({
-    lottery: drawingDateReducer,
-    filters: filtersReducer
+    lottery: lotteryReducer,
+    drawingdate: dateReducer
   })
 );
 
@@ -22,24 +21,17 @@ store.subscribe(() => {
 });
 
 store.dispatch(
-  filtersAction({
-    text: "text",
-    date: "success"
+  dateAction({
+    date: "January, 3, 2019",
+    text: "Until the Reckoning",
+    warning: "The time has come"
   })
 );
 
 store.dispatch(
   addLotteryApp({
     prizeDescription: "working",
-    winnerMessage: "yes",
-    drawingDate: 4
-  })
-);
-
-store.dispatch(
-  filtersAction({
-    text: "test2",
-    date: "success"
+    winnerMessage: "yes"
   })
 );
 

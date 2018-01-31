@@ -1,7 +1,6 @@
 import uuid from "uuid";
 
 export const addLotteryApp = ({
-  drawingDate = undefined,
   prizeDescription = "",
   winnerMessage = "",
   userEmail = ""
@@ -10,15 +9,15 @@ export const addLotteryApp = ({
   payload: {
     id: uuid(),
     prizeDescription,
-    drawingDate,
     winnerMessage
   }
 });
 
-export const filtersAction = ({ text, date } = {}) => ({
-  type: "FILTERS",
+export const dateAction = ({ date, text, warning } = {}) => ({
+  type: "DATE",
   payload: {
+    date,
     text,
-    date
+    warning
   }
 });

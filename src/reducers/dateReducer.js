@@ -1,15 +1,21 @@
 const filtersReducerDefaultState = {
+  date: "",
   text: "",
-  date: ""
+  warning: "",
+  days: 0,
+  hours: 0,
+  minutes: 0,
+  seconds: 0
 };
 export default (state = filtersReducerDefaultState, action) => {
   switch (action.type) {
-    case "FILTERS":
-      const { date, text } = action.payload;
+    case "DATE":
+      const { date, text, warning } = action.payload;
       return {
         ...state,
+        date,
         text,
-        date
+        warning
       };
     default:
       return state;
