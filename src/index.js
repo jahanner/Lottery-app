@@ -23,7 +23,7 @@ store.subscribe(() => {
 store.dispatch(
   dateAction({
     date: "January, 3, 2019",
-    text: "Until the Reckoning",
+    text: "Until the drawing",
     warning: "The time has come"
   })
 );

@@ -5,6 +5,8 @@ import React, { Component } from "react";
 import logo from "../images/logo-circle.png";
 import DrawingTime from "./drawingTime.js";
 import "../styles/App.css";
+import { connect } from "react-redux";
+import { dateAction } from "../actions/lottery";
 import Header from "./Header.js";
 
 class CreateApp extends Component {
@@ -28,9 +30,14 @@ class CreateApp extends Component {
           <Header />
           <h2 className="Prize-Description">Enter Lottery App info here</h2>
         </div>
-        <DrawingTime />
+        <DrawingTime
+          onSubmit={lottery => {
+            console.log(lottery);
+          }}
+        />
       </div>
     );
   }
 }
+
 export default CreateApp;

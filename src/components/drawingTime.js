@@ -28,7 +28,7 @@ export default class LotterySetUp extends React.Component {
     this.setState(() => ({ calendarFocused: focused }));
   };
 
-  handleAddOption = e => {
+  onSubmit = e => {
     e.preventDefault();
     if (!this.state.prizeDescription || !this.state.date) {
       this.setState(() => ({ error: "Please provide description and date" }));
@@ -45,7 +45,7 @@ export default class LotterySetUp extends React.Component {
     return (
       <div>
         {this.state.error && <p>{this.state.error}</p>}
-        <form className="entry-form-submit" onSubmit={this.handleAddOption}>
+        <form className="entry-form-submit" onSubmit={this.onSubmit}>
           <label className="prize-description" type="text">
             Prize Description:
           </label>

@@ -9,7 +9,7 @@ class Clock extends Component {
   //     hours: 0,
   //     minutes: 0,
   //     seconds: 0,
-  //     text: "Until the Reckoning",
+  //     text: "Until the drawing",
   //     warning: ""
   //   };
   // }
@@ -67,8 +67,10 @@ class Clock extends Component {
   }
 }
 const mapStateToProps = state => {
+  const { drawingdate } = state;
+  console.log(drawingdate);
   return {
-    deadline: state.date
+    drawingdate
   };
 };
 export default connect(mapStateToProps)(Clock);

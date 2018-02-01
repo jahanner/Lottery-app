@@ -12,7 +12,7 @@ class EntryPage extends Component {
   //   this.state = { deadline: "February, 3, 2018" };
   // }
 
-  render() {
+  render(props) {
     return (
       <div className="App">
         <div>
@@ -23,7 +23,7 @@ class EntryPage extends Component {
               <h3>Your odds of winning are: 1:1</h3>
             </div>
             <div className="Clock">
-              {/* <Clock deadline={this.props.deadline} /> */}
+              {/* <Clock deadline={this.state.deadline} /> */}
               <Clock deadline={this.props.deadline} />
             </div>
           </header>

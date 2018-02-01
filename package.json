@@ -5,6 +5,7 @@
   "dependencies": {
     "moment": "^2.20.1",
     "react": "^16.2.0",
+    "react-addons-shallow-compare": "^15.6.2",
     "react-countdown-clock": "^2.1.0",
     "react-dates": "^16.2.1",
     "react-dom": "^16.2.0",
