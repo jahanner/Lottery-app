@@ -2,9 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const linkTo = (route, text) => {
-  {
-    /*quick function to set up links*/
-  }
+  /*quick function to set up links*/
   if (route === "/" || route === "/portfolio") {
     return (
       <NavLink to={route} activeClassName="is-active" exact={true}>
@@ -21,11 +19,13 @@ const linkTo = (route, text) => {
 };
 
 const Header = () => (
-  <header>
-    <p>{linkTo("/status", "Lottery Status")}</p>
-    <p>{linkTo("/", "Entry Page")}</p>
-    <p>{linkTo("/create-app", "Create Lottery App")}</p>
-  </header>
+  <div>
+    <header>
+      <p>{linkTo("/status", "Lottery Status")}</p>
+      <p>{linkTo("/", "Entry Page")}</p>
+      <p>{linkTo("/create-app", "Create Lottery App")}</p>
+    </header>
+  </div>
 );
 
 export default Header;

@@ -3,17 +3,13 @@ import logo from "../images/logo-circle.png";
 import Clock from "./countdown-timer.js";
 import "../styles/App.css";
 import Header from "./Header.js";
-import { connect } from "react-redux";
+import Odds from "./odds";
 
 class StatusPage extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = { deadline: "January, 30, 2018" };
-  //   {
-  //     /*have to put in a componentwillmount method*/
-  //   }
-  // }
-
+  constructor(props) {
+    super(props);
+    this.state = { deadline: "January, 27, 2019" };
+  }
   render() {
     return (
       <div className="App">
@@ -22,7 +18,7 @@ class StatusPage extends Component {
             <img src={logo} className="App-logo" alt="logo" />
             <div className="title/odds">
               <h1 className="App-title">Lottery Status</h1>
-              <p>Odds of winning 1:1</p>
+              <Odds />
             </div>
             <div className="Clock">
               <Clock deadline={this.props.deadline} />
@@ -38,11 +34,4 @@ class StatusPage extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    deadline: state.date
-  };
-};
-
-export default connect(mapStateToProps)(StatusPage);
-// export default StatusPage;
+export default StatusPage;

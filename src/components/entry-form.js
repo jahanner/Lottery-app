@@ -1,10 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
+// import { connect } from "react-redux";
+// import { dispatch } from "redux-easy";
 
-export default class EntryForm extends React.Component {
-  state = {
-    error: undefined
-  };
-
+export default class EntryForm extends Component {
   handleAddOption = e => {
     e.preventDefault();
     const option = e.target.elements.option.value.trim();

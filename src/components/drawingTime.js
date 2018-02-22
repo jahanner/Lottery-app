@@ -1,28 +1,24 @@
 import "react-dates/initialize";
-import moment from "moment";
 import { SingleDatePicker } from "react-dates";
-import React from "react";
+import React, { Component } from "react";
 import "react-dates/lib/css/_datepicker.css";
+import { connect } from "react-redux";
+import { dispatchSet } from "redux-easy";
 
-const now = moment();
-console.log(now.format("MMM, Do, YYYY"));
-
-export default class LotterySetUp extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: "",
-      calendarFocused: false,
-      date: props.lottery ? moment(props.lottery.date) : moment(),
-      prizeDescription: props.lottery ? props.lottery.prizeDescription : "",
-      winnerMessage: ""
-    };
-  }
+class LotterySetUp extends Component {
   onDateChange = date => {
     if (date) {
       this.setState(() => ({ date }));
+      //const {date} = date.target
+      // dispatch("setLotteryDate", date);
     }
   };
+
+  // onDescriptionChange = e => {
+  //   // const {description} = e.target.value;
+  //   // this.setState(() => ({ description }));
+  //   dispatch("setPrizeDescription", description);
+  // };
 
   onFocusChange = ({ focused }) => {
     this.setState(() => ({ calendarFocused: focused }));
@@ -30,26 +26,39 @@ export default class LotterySetUp extends React.Component {
 
   onSubmit = e => {
     e.preventDefault();
-    if (!this.state.prizeDescription || !this.state.date) {
-      this.setState(() => ({ error: "Please provide description and date" }));
+    const { prizeDescription, lotteryDate } = this.props.lotteryApp;
+    if (!prizeDescription || !lotteryDate) {
+      dispatchSet("lotteryApp.error", "Please provide description and date");
+      // dispatch("setError", "Please provide description and date");
     } else {
-      this.setState(() => ({ error: "" }));
-      this.props.onSubmit({
-        date: this.state.date.valueOf(),
-        prizeDescription: this.state.prizeDescription
-      });
+      dispatchSet("lotteryApp.error", "");
+      // dispatch("setError", "");
+      // this.props.onSubmit({
+      //   date: this.state.date.valueOf(),
+      //   prizeDescription: this.state.prizeDescription
+      // });
+      this.props.history.push("/");
     }
   };
 
   render() {
+    const { lotteryApp } = this.props;
+    console.log(lotteryApp);
+    const { error } = lotteryApp;
     return (
       <div>
-        {this.state.error && <p>{this.state.error}</p>}
         <form className="entry-form-submit" onSubmit={this.onSubmit}>
+          {error && <p>{error}</p>}
           <label className="prize-description" type="text">
             Prize Description:
           </label>
-          <input type="text" name="prize" />
+          <input
+            type="text"
+            autoFocus
+            value={this.state.prizeDescription}
+            onChange={this.onDescriptionChange}
+            //<Input path='lotteryApp.prizeDescription' onChange={this.onDescriptionChange}
+          />
           <label className="date" type="text">
             Drawing Date:
           </label>
@@ -66,3 +75,11 @@ export default class LotterySetUp extends React.Component {
     );
   }
 }
+
+const mapState = state => {
+  console.log(state);
+  const { lotteryApp } = state;
+  return { lotteryApp };
+};
+
+export default connect(mapState)(LotterySetUp);
