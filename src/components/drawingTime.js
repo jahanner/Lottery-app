@@ -8,7 +8,7 @@ import { dispatchSet } from "redux-easy";
 class LotterySetUp extends Component {
   onDateChange = date => {
     if (date) {
-      this.setState(() => ({ date }));
+      dispatchSet("lotteryApp.lotteryDate", date);
       //const {date} = date.target
       // dispatch("setLotteryDate", date);
     }
@@ -26,18 +26,20 @@ class LotterySetUp extends Component {
 
   onSubmit = e => {
     e.preventDefault();
+    const description = document.getElementById("prizeDescriptionInput").value;
+    console.log(description);
     const { prizeDescription, lotteryDate } = this.props.lotteryApp;
-    if (!prizeDescription || !lotteryDate) {
-      dispatchSet("lotteryApp.error", "Please provide description and date");
+    if (prizeDescription && lotteryDate) {
+      dispatchSet("lotteryApp.error", "");
+      dispatchSet("lotteryApp.prizeDescription", description);
       // dispatch("setError", "Please provide description and date");
     } else {
-      dispatchSet("lotteryApp.error", "");
+      dispatchSet("lotteryApp.error", "Please provide description and date");
       // dispatch("setError", "");
       // this.props.onSubmit({
       //   date: this.state.date.valueOf(),
       //   prizeDescription: this.state.prizeDescription
       // });
-      this.props.history.push("/");
     }
   };
 
@@ -53,9 +55,10 @@ class LotterySetUp extends Component {
             Prize Description:
           </label>
           <input
+            id="prizeDescriptionInput"
             type="text"
             autoFocus
-            value={this.state.prizeDescription}
+            value={this.props.prizeDescription}
             onChange={this.onDescriptionChange}
             //<Input path='lotteryApp.prizeDescription' onChange={this.onDescriptionChange}
           />
@@ -63,11 +66,12 @@ class LotterySetUp extends Component {
             Drawing Date:
           </label>
           <SingleDatePicker
-            date={this.state.date}
+            date={this.props.lotteryDate}
             onDateChange={this.onDateChange}
-            focused={this.state.calendarFocused}
+            focused={this.props.calendarFocused}
             onFocusChange={this.onFocusChange}
             numberOfMonths={1}
+            displayFormat="MMM Do, YYYY"
           />
           <button className="button">Submit</button>
         </form>

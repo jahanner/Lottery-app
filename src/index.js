@@ -8,9 +8,11 @@ import { reduxSetup } from "redux-easy";
 import "./reducers";
 import moment from "moment";
 
+const now = moment.now();
+
 const initialState = {
   lotteryApp: {
-    lotteryDate: moment(),
+    lotteryDate: moment(now).format("MMM Do, YYYY"),
     prizeDescription: "",
     winnerMessage: "",
     error: "",
@@ -18,7 +20,7 @@ const initialState = {
     calendarFocused: false
   }
 };
-console.log("initialState =", initialState);
+
 const store = reduxSetup({ initialState, render });
 
 function render() {

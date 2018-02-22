@@ -10,7 +10,7 @@ import Odds from "./odds";
 class EntryPage extends Component {
   constructor(props) {
     super(props);
-    this.state = { deadline: "February 3, 2018" };
+    this.state = { deadline: "February 29, 2018" };
   }
 
   render(props) {

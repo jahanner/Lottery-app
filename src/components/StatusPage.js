@@ -4,6 +4,7 @@ import Clock from "./countdown-timer.js";
 import "../styles/App.css";
 import Header from "./Header.js";
 import Odds from "./odds";
+import { connect } from "react-redux";
 
 class StatusPage extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class StatusPage extends Component {
               <Odds />
             </div>
             <div className="Clock">
-              <Clock deadline={this.props.deadline} />
+              <Clock deadline={this.state.deadline} />
             </div>
           </header>
         </div>
@@ -34,4 +35,9 @@ class StatusPage extends Component {
   }
 }
 
-export default StatusPage;
+const mapStateToProps = state => {
+  return {
+    deadline: state.lotteryDate
+  };
+};
+export default connect(mapStateToProps)(StatusPage);

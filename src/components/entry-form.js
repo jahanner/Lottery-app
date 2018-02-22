@@ -1,26 +1,29 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
-// import { dispatch } from "redux-easy";
+import { connect } from "react-redux";
+import { dispatchSet } from "redux-easy";
 
-export default class EntryForm extends Component {
+class EntryForm extends Component {
   handleAddOption = e => {
     e.preventDefault();
-    const option = e.target.elements.option.value.trim();
-    const error = this.props.handleAddOption(option);
 
-    this.setState(() => ({ error }));
+    //TODO: Get this from Redux instead of from the DOM.
+    const option = e.target.elements.option.value.trim();
+
+    const error = this.props.handleAddOption(option);
+    dispatchSet("lotteryApp.error", error);
 
     if (!error) {
+      //TODO: Set this in Redux instead of in the DOM.
       e.target.elements.option.value = "";
     }
   };
 
   render() {
+    const { error } = this.props;
+
     return (
       <div>
-        {this.state.error && (
-          <p className="add-option-error">{this.state.error}</p>
-        )}
+        {error && <p className="add-option-error">{error}</p>}
         <form className="entry-form-submit" onSubmit={this.handleAddOption}>
           <label className="user-email" type="email">
             Email:{" "}
@@ -37,3 +40,10 @@ export default class EntryForm extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  const { error } = state.lotteryApp;
+  return { error };
+};
+
+export default connect(mapStateToProps)(EntryForm);
