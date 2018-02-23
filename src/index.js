@@ -16,25 +16,6 @@ const store = createStore(
   })
 );
 
-store.subscribe(() => {
-  console.log(store.getState());
-});
-
-store.dispatch(
-  dateAction({
-    date: "January, 3, 2019",
-    text: "Until the drawing",
-    warning: "The time has come"
-  })
-);
-
-store.dispatch(
-  addLotteryApp({
-    prizeDescription: "working",
-    winnerMessage: "yes"
-  })
-);
-
 const jsx = (
   <Provider store={store}>
     <AppRouter />
