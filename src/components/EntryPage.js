@@ -33,7 +33,7 @@ class EntryPage extends Component {
           <h2 className="Prize-Description">Prize Description Here...</h2>
           <p className="App-intro">To get started, enter your info.</p>
         </div>
-        <EntryForm deadline={this.state.deadline} />
+        <EntryForm />
       </div>
     );
   }

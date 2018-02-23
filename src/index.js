@@ -17,7 +17,9 @@ const initialState = {
     winnerMessage: "",
     error: "",
     numberOfEntries: 0,
-    calendarFocused: false
+    calendarFocused: false,
+    name: "",
+    email: ""
   }
 };
 

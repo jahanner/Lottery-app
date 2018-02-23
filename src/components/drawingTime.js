@@ -14,32 +14,22 @@ class LotterySetUp extends Component {
     }
   };
 
-  // onDescriptionChange = e => {
-  //   // const {description} = e.target.value;
-  //   // this.setState(() => ({ description }));
-  //   dispatch("setPrizeDescription", description);
-  // };
-
   onFocusChange = ({ focused }) => {
-    this.setState(() => ({ calendarFocused: focused }));
+    dispatchSet("calendarFocused", focused);
   };
 
   onSubmit = e => {
     e.preventDefault();
     const description = document.getElementById("prizeDescriptionInput").value;
     console.log(description);
-    const { prizeDescription, lotteryDate } = this.props.lotteryApp;
-    if (prizeDescription && lotteryDate) {
+    const { lotteryDate } = this.props.lotteryApp;
+    if (description && lotteryDate) {
       dispatchSet("lotteryApp.error", "");
       dispatchSet("lotteryApp.prizeDescription", description);
       // dispatch("setError", "Please provide description and date");
     } else {
       dispatchSet("lotteryApp.error", "Please provide description and date");
       // dispatch("setError", "");
-      // this.props.onSubmit({
-      //   date: this.state.date.valueOf(),
-      //   prizeDescription: this.state.prizeDescription
-      // });
     }
   };
 

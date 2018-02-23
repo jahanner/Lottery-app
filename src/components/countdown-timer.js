@@ -23,7 +23,6 @@ class Clock extends Component {
   }
   getTimeUntil(deadline) {
     const time = Date.parse(deadline) - Date.now();
-    console.log(deadline);
     if (time <= 0) {
       this.setState({ text: "" });
       this.setState({ warning: "Drawing time!" });
