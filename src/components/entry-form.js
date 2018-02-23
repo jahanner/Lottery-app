@@ -19,6 +19,7 @@ class EntryForm extends Component {
       dispatchSet("lotteryApp.name", name);
       dispatchSet("lotteryApp.email", email);
     }
+    //TODO: push to status page after successful submit
   };
 
   render() {

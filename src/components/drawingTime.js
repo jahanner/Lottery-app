@@ -12,6 +12,8 @@ class LotterySetUp extends Component {
       dispatchSet("lotteryApp.lotteryDate", lotteryDate);
       //const {date} = date.target
       // dispatch("setLotteryDate", date);
+
+      //TODO: successfully update date in store
     }
   };
 
@@ -36,6 +38,7 @@ class LotterySetUp extends Component {
     } else {
       dispatchSet("lotteryApp.error", "Please provide description and date");
     }
+    //TODO: push to status page displaying countdown to set lottery date
   };
 
   render() {
