@@ -5,8 +5,6 @@ import { dispatchSet } from "redux-easy";
 class EntryForm extends Component {
   handleAddOption = e => {
     e.preventDefault();
-    // const name = document.getElementById("name").value;
-    // const email = document.getElementById("email").value;
 
     //TODO: Get this from Redux instead of from the DOM.
     const option = e.target.elements.option.value.trim();
@@ -21,8 +19,8 @@ class EntryForm extends Component {
   };
 
   render() {
-    const { error, name, email } = this.props;
-    console.log(name);
+    const { error } = this.props;
+
     return (
       <div>
         {error && <p className="add-option-error">{error}</p>}
@@ -30,12 +28,12 @@ class EntryForm extends Component {
           <label className="user-email" type="email">
             Email:{" "}
           </label>
-          <input type="email" id="email" value={email} />
+          <input type="email" name="email" />
           <label className="user-name" type="text">
             {" "}
             Name:{" "}
           </label>
-          <input type="text" id="name" value={name} />
+          <input type="text" name="name" />
           <button className="button">Submit</button>
         </form>
       </div>
@@ -44,8 +42,8 @@ class EntryForm extends Component {
 }
 
 const mapStateToProps = state => {
-  const { error, name, email } = state.lotteryApp;
-  return { error, name, email };
+  const { error } = state.lotteryApp;
+  return { error };
 };
 
 export default connect(mapStateToProps)(EntryForm);

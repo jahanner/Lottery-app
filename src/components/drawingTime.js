@@ -6,30 +6,35 @@ import { connect } from "react-redux";
 import { dispatchSet } from "redux-easy";
 
 class LotterySetUp extends Component {
-  onDateChange = date => {
-    if (date) {
-      dispatchSet("lotteryApp.lotteryDate", date);
+  onDateChange = lotteryDate => {
+    console.log(this.props.lotteryApp);
+    if (lotteryDate) {
+      dispatchSet("lotteryApp.lotteryDate", lotteryDate);
       //const {date} = date.target
       // dispatch("setLotteryDate", date);
     }
   };
 
   onFocusChange = ({ focused }) => {
-    dispatchSet("calendarFocused", focused);
+    dispatchSet("lotteryApp.calendarFocused", focused);
+  };
+
+  onDescriptionChange = e => {
+    const description = e.target.value;
+    dispatchSet("lotteryApp.prizeDescription", { description });
   };
 
   onSubmit = e => {
     e.preventDefault();
     const description = document.getElementById("prizeDescriptionInput").value;
-    console.log(description);
-    const { lotteryDate } = this.props.lotteryApp;
+    const lotteryDate = document.getElementById("date").value;
+    // const { lotteryDate } = this.props.lotteryApp;
     if (description && lotteryDate) {
       dispatchSet("lotteryApp.error", "");
       dispatchSet("lotteryApp.prizeDescription", description);
-      // dispatch("setError", "Please provide description and date");
+      // dispatchSet("lotteryApp.lotteryDate", lotteryDate);
     } else {
       dispatchSet("lotteryApp.error", "Please provide description and date");
-      // dispatch("setError", "");
     }
   };
 
@@ -62,6 +67,7 @@ class LotterySetUp extends Component {
             onFocusChange={this.onFocusChange}
             numberOfMonths={1}
             displayFormat="MMM Do, YYYY"
+            id="date"
           />
           <button className="button">Submit</button>
         </form>
@@ -71,7 +77,6 @@ class LotterySetUp extends Component {
 }
 
 const mapState = state => {
-  console.log(state);
   const { lotteryApp } = state;
   return { lotteryApp };
 };
