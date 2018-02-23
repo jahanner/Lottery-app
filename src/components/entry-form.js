@@ -7,20 +7,23 @@ class EntryForm extends Component {
     e.preventDefault();
 
     //TODO: Get this from Redux instead of from the DOM.
-    const option = e.target.elements.option.value.trim();
+    //needs to add email and name to database
 
-    const error = this.props.handleAddOption(option);
-    dispatchSet("lotteryApp.error", error);
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
 
-    if (!error) {
-      //TODO: Set this in Redux instead of in the DOM.
+    if (!name || !email) {
+      dispatchSet("lotteryApp.error", "Enter a name and email fool");
+    } else {
       dispatchSet("lotteryApp.error", "");
+      dispatchSet("lotteryApp.name", name);
+      dispatchSet("lotteryApp.email", email);
     }
   };
 
   render() {
     const { error } = this.props;
-
+    console.log(this.props);
     return (
       <div>
         {error && <p className="add-option-error">{error}</p>}
@@ -28,12 +31,12 @@ class EntryForm extends Component {
           <label className="user-email" type="email">
             Email:{" "}
           </label>
-          <input type="email" name="email" />
+          <input type="email" name="email" id="email" />
           <label className="user-name" type="text">
             {" "}
             Name:{" "}
           </label>
-          <input type="text" name="name" />
+          <input type="text" name="name" id="name" />
           <button className="button">Submit</button>
         </form>
       </div>
@@ -42,8 +45,8 @@ class EntryForm extends Component {
 }
 
 const mapStateToProps = state => {
-  const { error } = state.lotteryApp;
-  return { error };
+  const { error, name, email } = state.lotteryApp;
+  return { error, name, email };
 };
 
 export default connect(mapStateToProps)(EntryForm);
