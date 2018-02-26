@@ -5,17 +5,13 @@ import "react-dates/lib/css/_datepicker.css";
 import { connect } from "react-redux";
 import { dispatchSet } from "redux-easy";
 import moment from "moment";
+// import { Redirect } from "react-router";
 
 class LotterySetUp extends Component {
   onDateChange = lotteryDate => {
     // console.log(this.props.lotteryApp);
-    if (lotteryDate) {
-      dispatchSet("lotteryApp.lotteryDate", lotteryDate);
-      //const {date} = date.target
-      // dispatch("setLotteryDate", date);
-
-      //TODO: successfully update date in store
-    }
+    dispatchSet("lotteryApp.lotteryDate", lotteryDate);
+    //TODO: successfully update date in store by clicking SingleDatePicker
   };
 
   onFocusChange = ({ focused }) => {
@@ -36,16 +32,20 @@ class LotterySetUp extends Component {
       dispatchSet("lotteryApp.error", "");
       dispatchSet("lotteryApp.prizeDescription", description);
       dispatchSet("lotteryApp.lotteryDate", lotteryDate);
+      // <Redirect to="/status" />;
     } else {
-      dispatchSet("lotteryApp.error", "Please provide description and date");
+      dispatchSet(
+        "lotteryApp.error",
+        "Please provide description and date of lottery"
+      );
     }
     //TODO: push to status page displaying countdown to set lottery date
   };
 
   render() {
     const { lotteryApp } = this.props;
-    console.log(lotteryApp.lotteryDate);
-    const { error } = lotteryApp;
+    console.log(lotteryApp);
+    const { error, lotteryDate } = lotteryApp;
     return (
       <div>
         <form className="entry-form-submit" onSubmit={this.onSubmit}>
@@ -66,8 +66,12 @@ class LotterySetUp extends Component {
           </label>
           <SingleDatePicker
             date={
-              this.props.lotteryDate ? moment(this.props.lotteryDate) : moment()
-              // lotteryApp ? moment(lotteryApp.lotteryDate) : moment()
+              // this.props.lotteryApp.lotteryDate !== null
+              //   ? moment(this.props.lotteryApp.lotteryDate)
+              //   : moment()
+              lotteryApp.lotteryDate !== 0
+                ? moment(this.props.lotteryDate)
+                : moment()
             }
             onDateChange={this.onDateChange}
             focused={this.props.calendarFocused}

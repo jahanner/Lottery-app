@@ -1,9 +1,18 @@
 import React from "react";
+import { connect } from "react-redux";
 
+const numberOfEntries = this.props;
+// console.log(this.props);
+//TODO: correctly display numberOfEntries from Redux store
 const Odds = () => (
   <div>
-    <h3>Your odds of winning are: 1:1</h3>
+    <h3>Your odds of winning are 1:{numberOfEntries}</h3>
   </div>
 );
 
-export default Odds;
+const mapStateToProps = state => {
+  const { numberOfEntries } = state.lotteryApp;
+  return { numberOfEntries };
+};
+
+export default connect(mapStateToProps)(Odds);

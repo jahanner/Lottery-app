@@ -6,13 +6,13 @@ import AppRouter from "./components/AppRouter.js";
 import registerServiceWorker from "./registerServiceWorker";
 import { reduxSetup } from "redux-easy";
 import "./reducers";
-import moment from "moment";
+// import moment from "moment";
 
-const now = moment.now();
+// const now = moment.now();
 
 const initialState = {
   lotteryApp: {
-    lotteryDate: now,
+    lotteryDate: 0,
     prizeDescription: "",
     winnerMessage: "",
     error: "",
