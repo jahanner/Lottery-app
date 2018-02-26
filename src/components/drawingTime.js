@@ -44,7 +44,7 @@ class LotterySetUp extends Component {
 
   render() {
     const { lotteryApp } = this.props;
-    console.log(lotteryApp);
+    console.log(moment(lotteryApp.lotteryDate));
     const { error } = lotteryApp;
     return (
       <div>
@@ -67,6 +67,7 @@ class LotterySetUp extends Component {
           <SingleDatePicker
             date={
               this.props.lotteryDate ? moment(this.props.lotteryDate) : moment()
+              // lotteryApp ? moment(lotteryApp.lotteryDate) : moment()
             }
             onDateChange={this.onDateChange}
             focused={this.props.calendarFocused}

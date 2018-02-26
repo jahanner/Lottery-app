@@ -12,7 +12,7 @@ const now = moment.now();
 
 const initialState = {
   lotteryApp: {
-    lotteryDate: 0,
+    lotteryDate: now,
     prizeDescription: "",
     winnerMessage: "",
     error: "",
