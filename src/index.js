@@ -4,18 +4,13 @@ import { Provider } from "react-redux";
 import "./styles/index.css";
 import AppRouter from "./components/AppRouter.js";
 import registerServiceWorker from "./registerServiceWorker";
-import { createStore, combineReducers } from "redux";
-import lotteryReducer from "./reducers/lottery";
-import dateReducer from "./reducers/dateReducer.js";
-import { addLotteryApp, dateAction } from "./actions/lottery.js";
+import { reduxSetup } from "redux-easy";
+import "./reducers";
+import moment from "moment";
 
-const store = createStore(
-  combineReducers({
-    lottery: lotteryReducer,
-    drawingdate: dateReducer
-  })
-);
+const now = moment.now();
 
+<<<<<<< HEAD
 const jsx = (
   <Provider store={store}>
     <AppRouter />
@@ -23,4 +18,31 @@ const jsx = (
 );
 
 ReactDOM.render(jsx, document.getElementById("root"));
+=======
+const initialState = {
+  lotteryApp: {
+    lotteryDate: now,
+    prizeDescription: "",
+    winnerMessage: "",
+    error: "",
+    numberOfEntries: 0,
+    calendarFocused: false,
+    name: "",
+    email: ""
+  }
+};
+
+const store = reduxSetup({ initialState, render });
+
+function render() {
+  ReactDOM.render(
+    <Provider store={store}>
+      <AppRouter />
+    </Provider>,
+    document.getElementById("root")
+  );
+}
+
+render();
+>>>>>>> Redux-easy
 registerServiceWorker();

@@ -26,7 +26,14 @@
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 2em;
+  padding-left: 20px;
+}
+
+.App-title-createApp {
+  font-size: 2em;
+  padding-left: 20px;
+  margin-top: 20px;
 }
 
 .App-intro {
@@ -60,6 +67,7 @@
   color: white;
   margin-left: 1rem;
   font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .entry-form-submit {

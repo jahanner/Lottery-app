@@ -5,12 +5,13 @@ import Clock from "./countdown-timer.js";
 import "../styles/App.css";
 import Header from "./Header.js";
 import { connect } from "react-redux";
+import Odds from "./odds";
 
 class EntryPage extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = { deadline: "February, 3, 2018" };
-  // }
+  constructor(props) {
+    super(props);
+    this.state = { deadline: "February 29, 2018" };
+  }
 
   render(props) {
     return (
@@ -20,11 +21,10 @@ class EntryPage extends Component {
             <img src={logo} className="App-logo" alt="logo" />
             <div className="title/odds">
               <h1 className="App-title">Welcome to Lottery App</h1>
-              <h3>Your odds of winning are: 1:1</h3>
+              <Odds />
             </div>
             <div className="Clock">
-              {/* <Clock deadline={this.state.deadline} /> */}
-              <Clock deadline={this.props.deadline} />
+              <Clock deadline={this.state.deadline} />
             </div>
           </header>
         </div>
@@ -41,7 +41,7 @@ class EntryPage extends Component {
 
 const mapStateToProps = state => {
   return {
-    deadline: state.date
+    deadline: state.lotteryDate
   };
 };
 export default connect(mapStateToProps)(EntryPage);
