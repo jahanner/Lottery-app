@@ -44,7 +44,7 @@ class LotterySetUp extends Component {
 
   render() {
     const { lotteryApp } = this.props;
-    console.log(moment(lotteryApp.lotteryDate));
+    console.log(lotteryApp.lotteryDate);
     const { error } = lotteryApp;
     return (
       <div>

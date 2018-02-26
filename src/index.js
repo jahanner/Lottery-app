@@ -10,15 +10,6 @@ import moment from "moment";
 
 const now = moment.now();
 
-<<<<<<< HEAD
-const jsx = (
-  <Provider store={store}>
-    <AppRouter />
-  </Provider>
-);
-
-ReactDOM.render(jsx, document.getElementById("root"));
-=======
 const initialState = {
   lotteryApp: {
     lotteryDate: now,
@@ -44,5 +35,4 @@ function render() {
 }
 
 render();
->>>>>>> Redux-easy
 registerServiceWorker();
