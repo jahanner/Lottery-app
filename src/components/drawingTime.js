@@ -4,10 +4,11 @@ import React, { Component } from "react";
 import "react-dates/lib/css/_datepicker.css";
 import { connect } from "react-redux";
 import { dispatchSet } from "redux-easy";
+import moment from "moment";
 
 class LotterySetUp extends Component {
   onDateChange = lotteryDate => {
-    console.log(this.props.lotteryApp);
+    // console.log(this.props.lotteryApp);
     if (lotteryDate) {
       dispatchSet("lotteryApp.lotteryDate", lotteryDate);
       //const {date} = date.target
@@ -34,7 +35,7 @@ class LotterySetUp extends Component {
     if (description && lotteryDate) {
       dispatchSet("lotteryApp.error", "");
       dispatchSet("lotteryApp.prizeDescription", description);
-      // dispatchSet("lotteryApp.lotteryDate", lotteryDate);
+      dispatchSet("lotteryApp.lotteryDate", lotteryDate);
     } else {
       dispatchSet("lotteryApp.error", "Please provide description and date");
     }
@@ -64,7 +65,9 @@ class LotterySetUp extends Component {
             Drawing Date:
           </label>
           <SingleDatePicker
-            date={this.props.lotteryDate}
+            date={
+              this.props.lotteryDate ? moment(this.props.lotteryDate) : moment()
+            }
             onDateChange={this.onDateChange}
             focused={this.props.calendarFocused}
             onFocusChange={this.onFocusChange}
