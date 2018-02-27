@@ -2,14 +2,13 @@ import "react-dates/initialize";
 import { SingleDatePicker } from "react-dates";
 import React, { Component } from "react";
 import "react-dates/lib/css/_datepicker.css";
-import { connect } from "react-redux";
-import { dispatchSet } from "redux-easy";
-// import moment from "moment";
+import { dispatchSet, watch } from "redux-easy";
+import moment from "moment";
 // import { Redirect } from "react-router";
 
 class LotterySetUp extends Component {
   onDateChange = lotteryDate => {
-    dispatchSet("lotteryApp.lotteryDate", lotteryDate);
+    dispatchSet("lotteryApp.lotteryDate", lotteryDate.valueOf());
   };
 
   onFocusChange = ({ focused }) => {
@@ -25,11 +24,10 @@ class LotterySetUp extends Component {
     e.preventDefault();
     const description = this.props.lotteryApp.prizeDescription;
     const lotteryDate = this.props.lotteryApp.lotteryDate;
+    console.log(lotteryDate);
     // const { lotteryDate } = this.props.lotteryApp;
     if (description && lotteryDate) {
       dispatchSet("lotteryApp.error", "");
-      dispatchSet("lotteryApp.prizeDescription", description);
-      dispatchSet("lotteryApp.lotteryDate", lotteryDate);
       // <Redirect to="/status" />;
     } else {
       dispatchSet(
@@ -49,7 +47,7 @@ class LotterySetUp extends Component {
       prizeDescription,
       calendarFocused
     } = lotteryApp;
-    console.log(lotteryDate._d);
+    console.log(lotteryDate);
     return (
       <div>
         <form className="entry-form-submit" onSubmit={this.onSubmit}>
@@ -69,7 +67,7 @@ class LotterySetUp extends Component {
             Drawing Date:
           </label>
           <SingleDatePicker
-            date={lotteryDate}
+            date={moment(lotteryDate)}
             onDateChange={this.onDateChange}
             focused={calendarFocused}
             onFocusChange={this.onFocusChange}
@@ -84,10 +82,4 @@ class LotterySetUp extends Component {
   }
 }
 
-const mapState = state => {
-  const { lotteryApp } = state;
-  return { lotteryApp };
-  //TODO: take lotteryApp out of the state
-};
-
-export default connect(mapState)(LotterySetUp);
+export default watch(LotterySetUp, { lotteryApp: "" });

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { dispatchSet } from "redux-easy";
+import { dispatchSet, watch } from "redux-easy";
 
 class EntryForm extends Component {
   handleAddOption = e => {
@@ -44,9 +43,9 @@ class EntryForm extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  const { error, name, email, numberOfEntries } = state.lotteryApp;
-  return { error, name, email, numberOfEntries };
-};
-
-export default connect(mapStateToProps)(EntryForm);
+export default watch(EntryForm, {
+  error: "lotteryApp.error",
+  name: "lotteryApp.name",
+  numberOfEntries: "lotteryApp.numberOfEntries",
+  email: "lotteryApp.email"
+});
