@@ -4,14 +4,12 @@ import React, { Component } from "react";
 import "react-dates/lib/css/_datepicker.css";
 import { connect } from "react-redux";
 import { dispatchSet } from "redux-easy";
-import moment from "moment";
+// import moment from "moment";
 // import { Redirect } from "react-router";
 
 class LotterySetUp extends Component {
   onDateChange = lotteryDate => {
-    // console.log(this.props.lotteryApp);
     dispatchSet("lotteryApp.lotteryDate", lotteryDate);
-    //TODO: successfully update date in store by clicking SingleDatePicker
   };
 
   onFocusChange = ({ focused }) => {
@@ -20,13 +18,13 @@ class LotterySetUp extends Component {
 
   onDescriptionChange = e => {
     const description = e.target.value;
-    dispatchSet("lotteryApp.prizeDescription", { description });
+    dispatchSet("lotteryApp.prizeDescription", description);
   };
 
   onSubmit = e => {
     e.preventDefault();
-    const description = document.getElementById("prizeDescriptionInput").value;
-    const lotteryDate = document.getElementById("date").value;
+    const description = this.props.lotteryApp.prizeDescription;
+    const lotteryDate = this.props.lotteryApp.lotteryDate;
     // const { lotteryDate } = this.props.lotteryApp;
     if (description && lotteryDate) {
       dispatchSet("lotteryApp.error", "");
@@ -39,13 +37,19 @@ class LotterySetUp extends Component {
         "Please provide description and date of lottery"
       );
     }
-    //TODO: push to status page displaying countdown to set lottery date
+    //TODO: push to status page onSubmit
   };
 
   render() {
     const { lotteryApp } = this.props;
     console.log(lotteryApp);
-    const { error, lotteryDate } = lotteryApp;
+    const {
+      error,
+      lotteryDate,
+      prizeDescription,
+      calendarFocused
+    } = lotteryApp;
+    console.log(lotteryDate._d);
     return (
       <div>
         <form className="entry-form-submit" onSubmit={this.onSubmit}>
@@ -57,7 +61,7 @@ class LotterySetUp extends Component {
             id="prizeDescriptionInput"
             type="text"
             autoFocus
-            value={this.props.prizeDescription}
+            value={prizeDescription}
             onChange={this.onDescriptionChange}
             //<Input path='lotteryApp.prizeDescription' onChange={this.onDescriptionChange}
           />
@@ -65,16 +69,9 @@ class LotterySetUp extends Component {
             Drawing Date:
           </label>
           <SingleDatePicker
-            date={
-              // this.props.lotteryApp.lotteryDate !== null
-              //   ? moment(this.props.lotteryApp.lotteryDate)
-              //   : moment()
-              lotteryApp.lotteryDate !== 0
-                ? moment(this.props.lotteryDate)
-                : moment()
-            }
+            date={lotteryDate}
             onDateChange={this.onDateChange}
-            focused={this.props.calendarFocused}
+            focused={calendarFocused}
             onFocusChange={this.onFocusChange}
             numberOfMonths={1}
             displayFormat="MMM Do, YYYY"
@@ -90,6 +87,7 @@ class LotterySetUp extends Component {
 const mapState = state => {
   const { lotteryApp } = state;
   return { lotteryApp };
+  //TODO: take lotteryApp out of the state
 };
 
 export default connect(mapState)(LotterySetUp);
