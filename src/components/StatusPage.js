@@ -4,29 +4,28 @@ import Clock from "./countdown-timer.js";
 import "../styles/App.css";
 import Header from "./Header.js";
 import Odds from "./odds";
-import moment from "moment";
 import { watch } from "redux-easy";
 
-const convertMS = milliseconds => {
-  let day, hour, minute, seconds;
-  seconds = Math.floor(milliseconds / 1000);
-  minute = Math.floor(seconds / 60);
-  seconds = seconds % 60;
-  hour = Math.floor(minute / 60);
-  minute = minute % 60;
-  day = Math.floor(hour / 24);
-  hour = hour % 24;
-  return {
-    day: day,
-    hour: hour,
-    minute: minute,
-    seconds: seconds
-  };
-};
+// const convertMS = milliseconds => {
+//   let day, hour, minute, seconds;
+//   seconds = Math.floor(milliseconds / 1000);
+//   minute = Math.floor(seconds / 60);
+//   seconds = seconds % 60;
+//   hour = Math.floor(minute / 60);
+//   minute = minute % 60;
+//   day = Math.floor(hour / 24);
+//   hour = hour % 24;
+//   return {
+//     day: day,
+//     hour: hour,
+//     minute: minute,
+//     seconds: seconds
+//   };
+// };
 
 class StatusPage extends Component {
   render() {
-    const { lotteryDate } = this.props;
+    const { lotteryDate, prizeDescription, winnerName } = this.props;
     // const { lotteryDate } = this.props.lotteryApp;
     // console.log(lotteryDate);
     // const ms = lotteryDate.milliseconds() - moment.now();
@@ -47,11 +46,17 @@ class StatusPage extends Component {
         </div>
         <div>
           <Header />
-          <h2 className="Prize-Description">The winner is...</h2>
+          <h2 className="Winner">Our winner is {winnerName}</h2>
         </div>
+        <h2>Congratulations, you win a {prizeDescription.toUpperCase()}!!!!</h2>
       </div>
+      //TODO: only set winner and prize description when countdown timer === 0;
     );
   }
 }
 
-export default watch(StatusPage, { lotteryDate: "lotteryApp.lotteryDate" });
+export default watch(StatusPage, {
+  lotteryDate: "lotteryApp.lotteryDate",
+  prizeDescription: "lotteryApp.prizeDescription",
+  winnerName: "lotteryApp.winnerName"
+});

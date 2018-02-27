@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import "react-dates/lib/css/_datepicker.css";
 import { dispatchSet, watch } from "redux-easy";
 import moment from "moment";
+// import OpenExample from "./calendarPicker.js";
 // import { Redirect } from "react-router";
 
 class LotterySetUp extends Component {
@@ -55,6 +56,7 @@ class LotterySetUp extends Component {
           <label className="prize-description" type="text">
             Prize Description:
           </label>
+
           <input
             id="prizeDescriptionInput"
             type="text"

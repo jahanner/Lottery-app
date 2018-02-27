@@ -9,7 +9,7 @@ const initialState = {
   lotteryApp: {
     lotteryDate: moment().valueOf(),
     prizeDescription: "",
-    winnerMessage: "",
+    winnerName: "Jesse",
     error: "",
     numberOfEntries: 0,
     calendarFocused: false,
