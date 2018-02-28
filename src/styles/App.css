@@ -36,7 +36,9 @@
 
 .Prize-Description {
   padding: 0 0 20px;
-  border-bottom: 1px solid black; }
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: center; }
 
 .Clock {
   color: white; }
@@ -60,3 +62,7 @@
 .entry-form-submit {
   flex-grow: 1;
   font-size: 1.5rem; }
+
+.date {
+  display: flex;
+  justify-content: center; }

@@ -1,41 +1,38 @@
 import React, { Component } from "react";
-import { dispatchSet, watch } from "redux-easy";
+import { Input, dispatchSet, watch } from "redux-easy";
 
 class EntryForm extends Component {
   handleAddOption = e => {
     e.preventDefault();
-
     //TODO: needs to add email and name to database
 
     const { email, name, numberOfEntries } = this.props;
 
     if (!name || !email) {
-      dispatchSet("lotteryApp.error", "Enter a name and email fool");
+      dispatchSet("lotteryApp.nameEmailError", "Enter a name and email fool");
     } else {
-      dispatchSet("lotteryApp.error", "");
-      dispatchSet("lotteryApp.name", name);
-      dispatchSet("lotteryApp.email", email);
+      dispatchSet("lotteryApp.nameEmailError", "");
       dispatchSet("lotteryApp.numberOfEntries", numberOfEntries + 1);
     }
     //TODO: push to status page after successful submit
   };
 
   render() {
-    const { error, name, email } = this.props;
+    const { nameEmailError } = this.props;
     console.log(this.props);
     return (
       <div>
-        {error && <p className="add-option-error">{error}</p>}
+        {nameEmailError && <p className="add-option-error">{nameEmailError}</p>}
         <form className="entry-form-submit" onSubmit={this.handleAddOption}>
           <label className="user-email" type="email">
             Email:{" "}
           </label>
-          <input type="email" name="email" value={email} />
+          <Input type="email" path="lotteryApp.email" />
           <label className="user-name" type="text">
             {" "}
             Name:{" "}
           </label>
-          <input type="text" name="name" value={name} />
+          <Input type="text" path="lotteryApp.name" />
           <button className="button">Submit</button>
         </form>
       </div>
@@ -44,7 +41,7 @@ class EntryForm extends Component {
 }
 
 export default watch(EntryForm, {
-  error: "lotteryApp.error",
+  nameEmailError: "lotteryApp.nameEmailError",
   name: "lotteryApp.name",
   numberOfEntries: "lotteryApp.numberOfEntries",
   email: "lotteryApp.email"

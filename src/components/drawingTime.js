@@ -26,13 +26,12 @@ class LotterySetUp extends Component {
     const description = this.props.lotteryApp.prizeDescription;
     const lotteryDate = this.props.lotteryApp.lotteryDate;
     console.log(lotteryDate);
-    // const { lotteryDate } = this.props.lotteryApp;
     if (description && lotteryDate) {
-      dispatchSet("lotteryApp.error", "");
+      dispatchSet("lotteryApp.lotteryError", "");
       // <Redirect to="/status" />;
     } else {
       dispatchSet(
-        "lotteryApp.error",
+        "lotteryApp.lotteryError",
         "Please provide description and date of lottery"
       );
     }
@@ -43,7 +42,7 @@ class LotterySetUp extends Component {
     const { lotteryApp } = this.props;
     console.log(lotteryApp);
     const {
-      error,
+      lotteryError,
       lotteryDate,
       prizeDescription,
       calendarFocused
@@ -52,7 +51,7 @@ class LotterySetUp extends Component {
     return (
       <div>
         <form className="entry-form-submit" onSubmit={this.onSubmit}>
-          {error && <p>{error}</p>}
+          {lotteryError && <p>{lotteryError}</p>}
           <label className="prize-description" type="text">
             Prize Description:
           </label>
@@ -66,7 +65,11 @@ class LotterySetUp extends Component {
             //<Input path='lotteryApp.prizeDescription' onChange={this.onDescriptionChange}
           />
           <label className="date" type="text">
-            Drawing Date:
+            Drawing Date:{" "}
+            <DateTime
+              onFocus={this.onFocusChange}
+              onChange={this.onDateChange}
+            />
           </label>
           {/* <SingleDatePicker
             date={moment(lotteryDate)}
@@ -77,23 +80,7 @@ class LotterySetUp extends Component {
             displayFormat="MMM Do, YYYY"
             id="date"
           /> */}
-          {/* <input
-            id="date"
-            type="date"
-            defaultValue={moment().format("YYYY-MM-D")}
-            onChange={this.onDateChange}
-            required
-          />
-          <label className="time" type="text">
-            Time:
-          </label>
-          <input id="time" type="time" defaultValue={moment().format('hh:mmA')} /> */}
-          <DateTime onFocus={this.onFocusChange} onChange={this.onDateChange} />
-          {/* <input
-            type="datetime-local"
-            defaultValue={moment().format("YYYY-MM-DDThh:mm")}
-            required
-          /> */}
+          {/* <DateTime onFocus={this.onFocusChange} onChange={this.onDateChange} /> */}
           <button className="button">Submit</button>
         </form>
       </div>
