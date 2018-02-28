@@ -4,9 +4,8 @@ import React, { Component } from "react";
 import "react-dates/lib/css/_datepicker.css";
 import { dispatchSet, watch } from "redux-easy";
 import moment from "moment";
-// import DateTime from "react-datetime";
+import DateTime from "react-datetime";
 // import { Redirect } from "react-router";
-const now = moment().format("YYYY-MM-DDThh:mm");
 
 class LotterySetUp extends Component {
   onDateChange = lotteryDate => {
@@ -88,12 +87,13 @@ class LotterySetUp extends Component {
           <label className="time" type="text">
             Time:
           </label>
-          <input id="time" type="time" defaultValue="18:30" /> */}
-          <input
+          <input id="time" type="time" defaultValue={moment().format('hh:mmA')} /> */}
+          <DateTime onFocus={this.onFocusChange} onChange={this.onDateChange} />
+          {/* <input
             type="datetime-local"
-            defaultValue={moment(lotteryDate).format("YYYY-MM-DDThh:mm")}
+            defaultValue={moment().format("YYYY-MM-DDThh:mm")}
             required
-          />
+          /> */}
           <button className="button">Submit</button>
         </form>
       </div>
