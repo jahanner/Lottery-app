@@ -1,22 +1,33 @@
 import React, { Component } from "react";
+import moment from "moment";
 
 const leading0 = num => String(Math.floor(num)).padStart(2, "0");
 
 class Clock extends Component {
-  state = {
-    text: "Until the drawing",
-    warning: ""
-  };
+  text = "Until the drawing";
+  warning = "";
 
   componentDidMount() {
     setInterval(() => this.forceUpdate(), 1000);
   }
 
+  getClockTime(time) {
+    return (
+      <div className="Clock-days">
+        <p>
+          {time.days} Days {time.hours} Hours {time.minutes} Minutes{" "}
+          {time.seconds} Seconds
+        </p>
+        <p>{this.text}</p>
+      </div>
+    );
+  }
+
   getTimeUntil(deadline) {
-    const time = deadline - Date.now();
+    const time = deadline - moment.now();
     if (time <= 0) {
-      this.setState({ text: "" });
-      this.setState({ warning: "Drawing time!" });
+      this.text = "";
+      this.warning = "Drawing time!";
     } else {
       const seconds = leading0((time / 1000) % 60);
       const minutes = leading0((time / 1000 / 60) % 60);
@@ -31,15 +42,9 @@ class Clock extends Component {
     const time = this.getTimeUntil(deadline);
     return (
       <div className="Clock">
-        <div className="Clock-days">
-          <p>
-            {time.days} Days {time.hours} Hours {time.minutes} Minutes{" "}
-            {time.seconds} Seconds
-          </p>
-          <p>{this.state.text}</p>
-        </div>
+        {time ? this.getClockTime(time) : <div>No lottery</div>}
         <div>
-          <p>{this.state.warning}</p>
+          <p>{this.warning}</p>
         </div>
       </div>
     );

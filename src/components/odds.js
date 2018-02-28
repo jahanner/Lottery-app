@@ -12,7 +12,7 @@ const Odds = () => (
 );
 
 const mapStateToProps = state => {
-  const { lotteryApp } = state.lotteryApp;
+  const { numberOfEntries } = state.lotteryApp;
   return { numberOfEntries };
 };
 

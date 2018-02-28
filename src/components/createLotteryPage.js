@@ -4,7 +4,6 @@ import DrawingTime from "./drawingTime.js";
 import "../styles/App.css";
 // import { connect } from "react-redux";
 import Header from "./Header.js";
-// import moment from "moment";
 
 class CreateApp extends Component {
   render() {

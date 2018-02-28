@@ -5,6 +5,7 @@ import "../styles/App.css";
 import Header from "./Header.js";
 import Odds from "./odds";
 import { watch } from "redux-easy";
+import moment from "moment";
 
 // const convertMS = milliseconds => {
 //   let day, hour, minute, seconds;
@@ -26,11 +27,6 @@ import { watch } from "redux-easy";
 class StatusPage extends Component {
   render() {
     const { lotteryDate, prizeDescription, winnerName } = this.props;
-    // const { lotteryDate } = this.props.lotteryApp;
-    // console.log(lotteryDate);
-    // const ms = lotteryDate.milliseconds() - moment.now();
-    // const deadline = moment.duration(ms);
-    //TODO: make clock deadline from lotteryDate
 
     return (
       <div className="App">
@@ -46,9 +42,15 @@ class StatusPage extends Component {
         </div>
         <div>
           <Header />
-          <h2 className="Winner">Our winner is {winnerName}</h2>
         </div>
-        <h2>Congratulations, you win a {prizeDescription.toUpperCase()}!!!!</h2>
+        {lotteryDate === moment.now ? (
+          <h2 className="Winner">
+            Our winner is {winnerName}
+            Congratulations, you win a {prizeDescription.toUpperCase()}!!!!
+          </h2>
+        ) : (
+          <h2>The lottery hasn't been drawn yet, check back soon!</h2>
+        )}
       </div>
       //TODO: only set winner and prize description when countdown timer === 0;
     );
