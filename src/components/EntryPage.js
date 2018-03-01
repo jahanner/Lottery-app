@@ -31,10 +31,10 @@ class EntryPage extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    deadline: state.lotteryDate
-  };
-};
-export default connect(mapStateToProps)(EntryPage);
-// export default EntryPage;
+// const mapStateToProps = state => {
+//   return {
+//     deadline: state.lotteryDate
+//   };
+// };
+// export default connect(mapStateToProps)(EntryPage);
+export default EntryPage;

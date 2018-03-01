@@ -1,18 +1,26 @@
 import React, { Component } from "react";
 import { Input, dispatchSet, watch } from "redux-easy";
+import database from "../firebase/firebase.js";
+import moment from "moment";
 
 class EntryForm extends Component {
   handleAddOption = e => {
     e.preventDefault();
     //TODO: needs to add email and name to database
 
-    const { email, name, numberOfEntries } = this.props;
+    const { email, name, numberOfEntries, lotteryDate } = this.props;
+    const contestant = {
+      name: name,
+      email: email
+    };
 
     if (!name || !email) {
       dispatchSet("lotteryApp.nameEmailError", "Enter a name and email fool");
     } else {
       dispatchSet("lotteryApp.nameEmailError", "");
       dispatchSet("lotteryApp.numberOfEntries", numberOfEntries + 1);
+      database.ref(`NumberOfEntries`).set(numberOfEntries + 1);
+      database.ref(`Entries/`).push(contestant);
     }
     //TODO: push to status page after successful submit
   };
@@ -44,5 +52,6 @@ export default watch(EntryForm, {
   nameEmailError: "lotteryApp.nameEmailError",
   name: "lotteryApp.name",
   numberOfEntries: "lotteryApp.numberOfEntries",
-  email: "lotteryApp.email"
+  email: "lotteryApp.email",
+  lotteryDate: "lotteryApp.lotteryDate"
 });

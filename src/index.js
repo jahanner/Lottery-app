@@ -4,6 +4,7 @@ import AppRouter from "./components/AppRouter.js";
 import { reduxSetup } from "redux-easy";
 import "./reducers";
 import moment from "moment";
+import "./firebase/firebase.js";
 
 const initialState = {
   lotteryApp: {

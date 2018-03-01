@@ -1,10 +1,11 @@
 import "react-dates/initialize";
-import { SingleDatePicker } from "react-dates";
 import React, { Component } from "react";
 import "react-dates/lib/css/_datepicker.css";
 import { dispatchSet, watch } from "redux-easy";
-import moment from "moment";
 import DateTime from "react-datetime";
+import Modal from "react-modal";
+import database from "../firebase/firebase.js";
+import moment from "moment";
 // import { Redirect } from "react-router";
 
 class LotterySetUp extends Component {
@@ -25,9 +26,13 @@ class LotterySetUp extends Component {
     e.preventDefault();
     const description = this.props.lotteryApp.prizeDescription;
     const lotteryDate = this.props.lotteryApp.lotteryDate;
+    const numberOfEntries = this.props.lotteryApp.numberOfEntries;
     console.log(lotteryDate);
     if (description && lotteryDate) {
+      const date = moment(lotteryDate).format("MMM Do YYYY h:mm");
       dispatchSet("lotteryApp.lotteryError", "");
+      database.ref("NumberOfEntries").set(numberOfEntries);
+      database.ref("LotteryDate").set(date);
       // <Redirect to="/status" />;
     } else {
       dispatchSet(
@@ -45,7 +50,7 @@ class LotterySetUp extends Component {
       lotteryError,
       lotteryDate,
       prizeDescription,
-      calendarFocused
+      numberOfEntries
     } = lotteryApp;
     console.log(lotteryDate);
     return (
@@ -69,6 +74,7 @@ class LotterySetUp extends Component {
             <DateTime
               onFocus={this.onFocusChange}
               onChange={this.onDateChange}
+              className="date"
             />
           </label>
           {/* <SingleDatePicker
