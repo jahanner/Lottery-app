@@ -38,7 +38,9 @@
   background: rgba(36, 123, 160, 0.7) !important; }
 
 .custom-modal {
-  color: white !important;
+  border: 2px black solid;
+  color: black !important;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
   background: #03cf05 !important; }
 
 .Prize-Description {

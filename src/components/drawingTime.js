@@ -96,7 +96,11 @@ class LotterySetUp extends Component {
           <button className="button" onClick={this.onOpenModal}>
             Submit
           </button>
-          <Modal open={open} onClose={this.onCloseModal}>
+          <Modal
+            open={open}
+            onClose={this.onCloseModal}
+            classNames={{ overlay: "custom-overlay", modal: "custom-modal" }}
+          >
             <h2>Lottery date successfully set!</h2>
           </Modal>
         </form>
