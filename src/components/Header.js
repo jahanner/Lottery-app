@@ -21,9 +21,9 @@ const linkTo = (route, text) => {
 const Header = () => (
   <div>
     <header>
+      <p>{linkTo("/create-app", "Create Lottery")}</p>
       <p>{linkTo("/status", "Lottery Status")}</p>
-      <p>{linkTo("/", "Entry Page")}</p>
-      <p>{linkTo("/create-app", "Create Lottery App")}</p>
+      <p>{linkTo("/", "Lottery Entry")}</p>
     </header>
   </div>
 );

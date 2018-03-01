@@ -2,8 +2,21 @@ import React, { Component } from "react";
 import { Input, dispatchSet, watch } from "redux-easy";
 import database from "../firebase/firebase.js";
 import moment from "moment";
+import Modal from "react-responsive-modal";
 
 class EntryForm extends Component {
+  state = {
+    open: false
+  };
+
+  onOpenModal = () => {
+    this.setState({ open: true });
+  };
+
+  onCloseModal = () => {
+    this.setState({ open: false });
+    window.location = "/status";
+  };
   handleAddOption = e => {
     e.preventDefault();
     //TODO: needs to add email and name to database
@@ -28,6 +41,7 @@ class EntryForm extends Component {
   };
 
   render() {
+    const { open } = this.state;
     const { nameEmailError } = this.props;
     console.log(this.props);
     return (
@@ -43,7 +57,16 @@ class EntryForm extends Component {
             Name:{" "}
           </label>
           <Input type="text" path="lotteryApp.name" />
-          <button className="button">Submit</button>
+          <button className="button" onClick={this.onOpenModal}>
+            Submit
+          </button>
+          <Modal
+            open={open}
+            onClose={this.onCloseModal}
+            classNames={{ overlay: "custom-overlay", modal: "custom-modal" }}
+          >
+            <h2>You've successfully entered the lottery!</h2>
+          </Modal>
         </form>
       </div>
     );
