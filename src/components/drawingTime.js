@@ -1,14 +1,27 @@
-import "react-dates/initialize";
+// import "react-dates/initialize";
 import React, { Component } from "react";
-import "react-dates/lib/css/_datepicker.css";
+// import "react-dates/lib/css/_datepicker.css";
 import { dispatchSet, watch } from "redux-easy";
 import DateTime from "react-datetime";
-// import Modal from "react-modal";
+import Modal from "react-responsive-modal";
 import database from "../firebase/firebase.js";
 import moment from "moment";
 // import { Redirect } from "react-router";
 
 class LotterySetUp extends Component {
+  state = {
+    open: false
+  };
+
+  onOpenModal = () => {
+    this.setState({ open: true });
+  };
+
+  onCloseModal = () => {
+    this.setState({ open: false });
+    window.location = "/status";
+  };
+
   onDateChange = lotteryDate => {
     dispatchSet("lotteryApp.lotteryDate", lotteryDate.valueOf());
   };
@@ -33,7 +46,8 @@ class LotterySetUp extends Component {
       dispatchSet("lotteryApp.lotteryError", "");
       database.ref("NumberOfEntries").set(numberOfEntries);
       database.ref("LotteryDate").set(date);
-      window.location = "/status";
+      // window.alert("Lottery date successfully set!");
+      // window.location = "/status";
     } else {
       dispatchSet(
         "lotteryApp.lotteryError",
@@ -43,10 +57,10 @@ class LotterySetUp extends Component {
   };
 
   render() {
+    const { open } = this.state;
     const { lotteryApp } = this.props;
     console.log(lotteryApp);
     const { lotteryError, lotteryDate, prizeDescription } = lotteryApp;
-    console.log(lotteryDate);
     return (
       <div>
         <form className="entry-form-submit" onSubmit={this.onSubmit}>
@@ -79,7 +93,12 @@ class LotterySetUp extends Component {
             displayFormat="MMM Do, YYYY"
             id="date"
           /> */}
-          <button className="button">Submit</button>
+          <button className="button" onClick={this.onOpenModal}>
+            Submit
+          </button>
+          <Modal open={open} onClose={this.onCloseModal}>
+            <h2>Lottery date successfully set!</h2>
+          </Modal>
         </form>
       </div>
     );
