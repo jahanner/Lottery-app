@@ -8,10 +8,12 @@ class EntryForm extends Component {
     e.preventDefault();
     //TODO: needs to add email and name to database
 
-    const { email, name, numberOfEntries, lotteryDate } = this.props;
+    const { email, name, numberOfEntries } = this.props;
+    const now = moment().format("MMM Do YYYY hh:mm");
     const contestant = {
       name: name,
-      email: email
+      email: email,
+      timeEntered: now
     };
 
     if (!name || !email) {
@@ -20,7 +22,7 @@ class EntryForm extends Component {
       dispatchSet("lotteryApp.nameEmailError", "");
       dispatchSet("lotteryApp.numberOfEntries", numberOfEntries + 1);
       database.ref(`NumberOfEntries`).set(numberOfEntries + 1);
-      database.ref(`Entries/`).push(contestant);
+      database.ref(`Entries`).push(contestant);
     }
     //TODO: push to status page after successful submit
   };

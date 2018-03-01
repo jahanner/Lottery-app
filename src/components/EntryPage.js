@@ -3,7 +3,7 @@ import logo from "../images/logo-circle.png";
 import EntryForm from "./entry-form.js";
 import "../styles/App.css";
 import Header from "./Header.js";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 import Odds from "./odds";
 
 class EntryPage extends Component {

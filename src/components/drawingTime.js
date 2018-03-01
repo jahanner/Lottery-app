@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import "react-dates/lib/css/_datepicker.css";
 import { dispatchSet, watch } from "redux-easy";
 import DateTime from "react-datetime";
-import Modal from "react-modal";
+// import Modal from "react-modal";
 import database from "../firebase/firebase.js";
 import moment from "moment";
 // import { Redirect } from "react-router";
@@ -33,25 +33,19 @@ class LotterySetUp extends Component {
       dispatchSet("lotteryApp.lotteryError", "");
       database.ref("NumberOfEntries").set(numberOfEntries);
       database.ref("LotteryDate").set(date);
-      // <Redirect to="/status" />;
+      window.location = "/status";
     } else {
       dispatchSet(
         "lotteryApp.lotteryError",
         "Please provide description and date of lottery"
       );
     }
-    //TODO: push to status page onSubmit
   };
 
   render() {
     const { lotteryApp } = this.props;
     console.log(lotteryApp);
-    const {
-      lotteryError,
-      lotteryDate,
-      prizeDescription,
-      numberOfEntries
-    } = lotteryApp;
+    const { lotteryError, lotteryDate, prizeDescription } = lotteryApp;
     console.log(lotteryDate);
     return (
       <div>
@@ -67,7 +61,6 @@ class LotterySetUp extends Component {
             autoFocus
             value={prizeDescription}
             onChange={this.onDescriptionChange}
-            //<Input path='lotteryApp.prizeDescription' onChange={this.onDescriptionChange}
           />
           <label className="date" type="text">
             Drawing Date:{" "}
@@ -86,7 +79,6 @@ class LotterySetUp extends Component {
             displayFormat="MMM Do, YYYY"
             id="date"
           /> */}
-          {/* <DateTime onFocus={this.onFocusChange} onChange={this.onDateChange} /> */}
           <button className="button">Submit</button>
         </form>
       </div>
