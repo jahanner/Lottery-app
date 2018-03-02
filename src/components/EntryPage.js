@@ -3,11 +3,14 @@ import logo from "../images/logo-circle.png";
 import EntryForm from "./entry-form.js";
 import "../styles/App.css";
 import Header from "./Header.js";
-// import { connect } from "react-redux";
+import moment from "moment";
 import Odds from "./odds";
+import { watch } from "redux-easy";
 
 class EntryPage extends Component {
-  render(props) {
+  render() {
+    const { lotteryDate, prizeDescription } = this.props;
+
     return (
       <div className="App">
         <div>
@@ -22,8 +25,15 @@ class EntryPage extends Component {
         </div>
         <div>
           <Header />
-          <h2 className="Prize-Description">Prize Description Here...</h2>
-          <p className="App-intro">To get started, enter your info.</p>
+          {prizeDescription === "" ? (
+            <h2 className="Prize-Description">No prize has been set</h2>
+          ) : (
+            <h2 className="Prize-Description">
+              You could win a {prizeDescription} on{" "}
+              {moment(lotteryDate).format("MMM Do YYYY")}
+            </h2>
+          )}
+          <h2 className="App-intro">To enter the lottery</h2>
         </div>
         <EntryForm />
       </div>
@@ -31,10 +41,7 @@ class EntryPage extends Component {
   }
 }
 
-// const mapStateToProps = state => {
-//   return {
-//     deadline: state.lotteryDate
-//   };
-// };
-// export default connect(mapStateToProps)(EntryPage);
-export default EntryPage;
+export default watch(EntryPage, {
+  lotteryDate: "lotteryApp.lotteryDate",
+  prizeDescription: "lotteryApp.prizeDescription"
+});

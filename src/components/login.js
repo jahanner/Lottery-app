@@ -1,6 +1,6 @@
-import React from "react";
 import * as firebase from "firebase";
-import { googleAuthProvider, database } from "../firebase/firebase.js";
+import database, { googleAuthProvider } from "../firebase/firebase.js";
+import { dispatchSet, watch } from "redux-easy";
 
 const signIn = () => {
   firebase
@@ -11,7 +11,19 @@ const signIn = () => {
       const token = result.credential.accessToken;
       // The signed-in user info.
       const user = result.user;
+      const name = user.displayName;
+      const email = user.email;
+      const id = user.uid;
+      const entry = {
+        name: name,
+        email: email
+      };
       // ...
+      console.log(name, email);
+      dispatchSet("lotteryApp.name", name);
+      dispatchSet("lotteryApp.email", email);
+      database.ref(`Entries/${id}`).set(entry);
+      database.ref(`NumberOfEntries`).set(+1);
     })
     .catch(function(error) {
       // Handle Errors here.
