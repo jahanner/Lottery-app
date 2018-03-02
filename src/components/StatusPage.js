@@ -37,7 +37,6 @@ class StatusPage extends Component {
           <h2>The lottery hasn't been drawn yet, check back soon!</h2>
         )}
       </div>
-      //TODO: only set winner and prize description when countdown timer === 0;
     );
   }
 }

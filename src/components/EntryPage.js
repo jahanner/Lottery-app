@@ -30,7 +30,8 @@ class EntryPage extends Component {
           ) : (
             <h2 className="Prize-Description">
               You could win a {prizeDescription} on{" "}
-              {moment(lotteryDate).format("MMM Do YYYY")}
+              {moment(lotteryDate).format("MMM Do")} at{" "}
+              {moment(lotteryDate).format("hh:mmA")}!!!
             </h2>
           )}
           <h2 className="App-intro">To enter the lottery</h2>

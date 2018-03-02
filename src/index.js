@@ -15,7 +15,7 @@ const initialState = {
     lotteryError: "",
     numberOfEntries: 0,
     calendarFocused: false,
-    name: "", //TODO: make name and email into arrays
+    name: "", //TODO: make name and email into objects
     email: ""
   }
 };

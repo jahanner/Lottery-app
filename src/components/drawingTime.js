@@ -38,12 +38,12 @@ class LotterySetUp extends Component {
     e.preventDefault();
     const description = this.props.lotteryApp.prizeDescription;
     const lotteryDate = this.props.lotteryApp.lotteryDate;
-    const numberOfEntries = this.props.lotteryApp.numberOfEntries;
+    // const numberOfEntries = this.props.lotteryApp.numberOfEntries;
     console.log(lotteryDate);
     if (description && lotteryDate) {
-      const date = moment(lotteryDate).format("MMM Do YYYY h:mm");
+      const date = moment(lotteryDate).format("MMM Do YYYY h:mmA");
       dispatchSet("lotteryApp.lotteryError", "");
-      database.ref("NumberOfEntries").set(numberOfEntries);
+      database.ref("NumberOfEntries").set(0);
       database.ref("LotteryDate").set(date);
     } else {
       dispatchSet(
