@@ -6,7 +6,6 @@ import DateTime from "react-datetime";
 import Modal from "react-responsive-modal";
 import database from "../firebase/firebase.js";
 import moment from "moment";
-// import { Redirect } from "react-router";
 
 class LotterySetUp extends Component {
   state = {
@@ -46,8 +45,6 @@ class LotterySetUp extends Component {
       dispatchSet("lotteryApp.lotteryError", "");
       database.ref("NumberOfEntries").set(numberOfEntries);
       database.ref("LotteryDate").set(date);
-      // window.alert("Lottery date successfully set!");
-      // window.location = "/status";
     } else {
       dispatchSet(
         "lotteryApp.lotteryError",
@@ -60,7 +57,7 @@ class LotterySetUp extends Component {
     const { open } = this.state;
     const { lotteryApp } = this.props;
     console.log(lotteryApp);
-    const { lotteryError, lotteryDate, prizeDescription } = lotteryApp;
+    const { lotteryError, prizeDescription } = lotteryApp;
     return (
       <div>
         <form className="entry-form-submit" onSubmit={this.onSubmit}>

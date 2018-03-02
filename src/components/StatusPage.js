@@ -30,7 +30,7 @@ class StatusPage extends Component {
         </div>
         {time <= 0 ? (
           <h2 className="Winner">
-            Our winner is {winnerName} Congratulations, you win{" "}
+            Our winner is {winnerName}! Congratulations, you win a{" "}
             {prizeDescription.toUpperCase()}!!!!
           </h2>
         ) : (

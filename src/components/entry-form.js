@@ -3,6 +3,7 @@ import { Input, dispatchSet, watch } from "redux-easy";
 import database from "../firebase/firebase.js";
 import moment from "moment";
 import Modal from "react-responsive-modal";
+import signIn from "./login.js";
 
 class EntryForm extends Component {
   state = {
