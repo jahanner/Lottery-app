@@ -1,14 +1,14 @@
 import * as firebase from "firebase";
 import database, { googleAuthProvider } from "../firebase/firebase.js";
-import { dispatchSet, watch } from "redux-easy";
+import { dispatchSet } from "redux-easy";
 
-const signIn = () => {
+const signIn = users => {
   firebase
     .auth()
     .signInWithPopup(googleAuthProvider)
     .then(function(result) {
       // This gives you a Google Access Token. You can use it to access the Google API.
-      const token = result.credential.accessToken;
+      // const token = result.credential.accessToken;
       // The signed-in user info.
       const user = result.user;
       const name = user.displayName;
@@ -20,20 +20,21 @@ const signIn = () => {
       };
       // ...
       console.log(name, email);
-      dispatchSet("lotteryApp.name", name);
-      dispatchSet("lotteryApp.email", email);
+      dispatchSet("lotteryApp.users", [...users, entry]);
       database.ref(`Entries/${id}`).set(entry);
-      database.ref(`NumberOfEntries`).set(+1);
+      // database
+      //   .ref("Entries")
+      //   .on("child_added", function(snapshot, prevChildKey) {
+      //     const name = snapshot.val().name;
+      //   });
+      //TODO: retrieve data, forEach() push to array to get count
+      // database.ref(`Entries/NumberOfEntries`).update(updates);
     })
     .catch(function(error) {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      const credential = error.credential;
-      // ...
+      if (error.code === "auth/account-exists-with-different-credential") {
+        window.alert("That email has already been taken");
+      }
+      console.log(error);
     });
 };
 

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { watch } from "redux-easy";
+import database from "../firebase/firebase.js";
 
 const numberEntered = numberOfEntries => {
   if (numberOfEntries === 0) {
@@ -19,11 +20,13 @@ const numberEntered = numberOfEntries => {
 
 class Odds extends Component {
   render() {
-    const { numberOfEntries } = this.props;
+    const { users } = this.props;
+    const numberOfEntries = users.length;
     return numberEntered(numberOfEntries);
   }
 }
 
 export default watch(Odds, {
-  numberOfEntries: "lotteryApp.numberOfEntries"
+  numberOfEntries: "lotteryApp.numberOfEntries",
+  users: "lotteryApp.users"
 });

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Input, dispatchSet, watch } from "redux-easy";
-import database from "../firebase/firebase.js";
+// import database from "../firebase/firebase.js";
 // import moment from "moment";
 // import Modal from "react-responsive-modal";
 import signIn from "./login.js";
@@ -20,7 +20,6 @@ class EntryForm extends Component {
   // };
   // handleAddOption = e => {
   //   e.preventDefault();
-  //   //TODO: needs to add email and name to database
   //
   //   const { email, name, numberOfEntries } = this.props;
   //   const now = moment().format("MMM Do YYYY hh:mm");
@@ -38,16 +37,22 @@ class EntryForm extends Component {
   //     database.ref(`NumberOfEntries`).set(numberOfEntries + 1);
   //     database.ref(`Entries`).push(contestant);
   //   }
-  //   //TODO: push to status page after successful submit
   // };
 
   render() {
     // const { open } = this.state;
-    const { nameEmailError } = this.props;
+    const { nameEmailError, users, lotteryDate } = this.props;
     console.log(this.props);
     return (
       <div>
-        <button className="button" onClick={signIn}>
+        <button
+          className="button"
+          onClick={() => {
+            if (lotteryDate === "") {
+              window.alert("Can't enter until lottery has been created");
+            } else signIn(users);
+          }}
+        >
           Sign in with Google
         </button>
         {/* {nameEmailError && <p className="add-option-error">{nameEmailError}</p>}
@@ -79,8 +84,7 @@ class EntryForm extends Component {
 
 export default watch(EntryForm, {
   nameEmailError: "lotteryApp.nameEmailError",
-  name: "lotteryApp.name",
+  users: "lotteryApp.users",
   numberOfEntries: "lotteryApp.numberOfEntries",
-  email: "lotteryApp.email",
   lotteryDate: "lotteryApp.lotteryDate"
 });

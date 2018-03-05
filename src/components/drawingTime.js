@@ -43,7 +43,6 @@ class LotterySetUp extends Component {
     if (description && lotteryDate) {
       const date = moment(lotteryDate).format("MMM Do YYYY h:mmA");
       dispatchSet("lotteryApp.lotteryError", "");
-      database.ref("NumberOfEntries").set(0);
       database.ref("LotteryDate").set(date);
     } else {
       dispatchSet(

@@ -8,15 +8,14 @@ import "./firebase/firebase.js";
 
 const initialState = {
   lotteryApp: {
-    lotteryDate: moment().valueOf(),
+    lotteryDate: "",
     prizeDescription: "",
     winnerName: "Jesse",
     nameEmailError: "",
     lotteryError: "",
     numberOfEntries: 0,
     calendarFocused: false,
-    name: "", //TODO: make name and email into objects
-    email: ""
+    users: []
   }
 };
 
