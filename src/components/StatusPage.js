@@ -35,16 +35,19 @@ class StatusPage extends Component {
 
         {time && prizeDescription !== "" ? (
           time <= 0 ? (
-            <h2 className="Winner">
+            <h2 className="Prize-Description">
               The winner is {winner.name}! Congratulations, you win a{" "}
               {prizeDescription.toUpperCase()}!!!!
             </h2>
           ) : (
-            <h2>
-              The lottery hasn't been drawn yet, check back soon!<br /> You
-              could win a {prizeDescription} on{" "}
-              {moment(lotteryDate).format("MMM Do")} at{" "}
-              {moment(lotteryDate).format("hh:mmA")}!!!
+            <h2 className="Prize-Description">
+              <p>
+                {" "}
+                The lottery hasn't been drawn yet, check back soon!<br /> You
+                could win a <span>{prizeDescription}</span> on{" "}
+                {moment(lotteryDate).format("MMM Do")} at{" "}
+                {moment(lotteryDate).format("hh:mmA")}!!!
+              </p>
             </h2>
           )
         ) : (

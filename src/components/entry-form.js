@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input, dispatchSet, watch } from "redux-easy";
+import { watch } from "redux-easy";
 // import database from "../firebase/firebase.js";
 // import moment from "moment";
 // import Modal from "react-responsive-modal";
@@ -29,7 +29,7 @@ class EntryForm extends Component {
 
   render() {
     // const { open } = this.state;
-    const { nameEmailError, users, lotteryDate } = this.props;
+    const { users, lotteryDate } = this.props;
     console.log(this.props);
     return (
       <div>
@@ -49,7 +49,6 @@ class EntryForm extends Component {
 }
 
 export default watch(EntryForm, {
-  nameEmailError: "lotteryApp.nameEmailError",
   users: "lotteryApp.users",
   numberOfEntries: "lotteryApp.numberOfEntries",
   lotteryDate: "lotteryApp.lotteryDate"

@@ -52,20 +52,22 @@
   cursor: pointer;
 }
 
-.custom-overlay {
-  background: rgba(36, 123, 160, 0.7) !important;
-}
-
-.custom-modal {
-  border: 2px black solid;
-  color: white !important;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-  background: #03cf05 !important;
-}
+// .custom-overlay {
+//   background: rgba(36, 123, 160, 0.7) !important;
+// }
+//
+// .custom-modal {
+//   border: 2px black solid;
+//   color: white !important;
+//   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+//   background: #03cf05 !important;
+// }
 
 .Clock {
-  color: green;
+  color: #084a92;
   font-weight: bold;
+  margin-top: 2rem;
+  margin-bottom: -1rem;
 }
 
 @keyframes App-logo-spin {
@@ -95,7 +97,7 @@
 }
 
 .Prize-Description span {
-  color: gold;
+  color: #f5cf0a;
 }
 
 .rdt {
