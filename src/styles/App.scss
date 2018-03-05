@@ -136,21 +136,34 @@
 .rdtPicker th {
   text-align: center;
   height: 28px;
+  border-top: 1px solid black;
 }
 .rdtPicker td {
   cursor: pointer;
+  border: 1px solid black;
 }
 .rdtPicker td.rdtDay:hover,
 .rdtPicker td.rdtHour:hover,
 .rdtPicker td.rdtMinute:hover,
 .rdtPicker td.rdtSecond:hover,
 .rdtPicker .rdtTimeToggle:hover {
-  background: #eeeeee;
+  background: forestgreen;
   cursor: pointer;
 }
-.rdtPicker td.rdtOld,
+
+.rdtPicker td.rdtOld:hover {
+  background: red;
+  color: black;
+}
+.rdtPicker td.rdtNew:hover {
+  background: dodgerblue;
+  color: black;
+}
+.rdtPicker td.rdtOld {
+  color: lightgrey;
+}
 .rdtPicker td.rdtNew {
-  color: #999999;
+  color: lightblue;
 }
 .rdtPicker td.rdtToday {
   position: relative;
@@ -200,6 +213,7 @@
 }
 .rdtPicker th.rdtSwitch {
   width: 100px;
+  color: forestgreen;
 }
 .rdtPicker th.rdtNext,
 .rdtPicker th.rdtPrev {
