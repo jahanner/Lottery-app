@@ -3,14 +3,14 @@ import "./styles/index.css";
 import AppRouter from "./components/AppRouter.js";
 import { reduxSetup } from "redux-easy";
 import "./reducers";
-import moment from "moment";
+// import moment from "moment";
 import "./firebase/firebase.js";
 
 const initialState = {
   lotteryApp: {
     lotteryDate: "",
     prizeDescription: "",
-    winnerName: "Jesse",
+    winnerName: "",
     nameEmailError: "",
     lotteryError: "",
     numberOfEntries: 0,

@@ -18,16 +18,18 @@ const signIn = users => {
         name: name,
         email: email
       };
+      // const avoidDuplicate =
+      //   users.includes(entry) === false
+      //     ? dispatchSet("lotteryApp.users", [...users, entry])
+      //     : users;
       // ...
-      console.log(name, email);
       dispatchSet("lotteryApp.users", [...users, entry]);
       database.ref(`Entries/${id}`).set(entry);
       window.location = "/status";
-      // database
-      //   .ref("Entries")
-      //   .on("child_added", function(snapshot, prevChildKey) {
-      //     const name = snapshot.val().name;
-      //   });
+      // database.ref("Entries").on("value", function(snapshot, prevChildKey) {
+      //   const user = snapshot.val();
+      //   console.log(user);
+      // });
       //TODO: retrieve data, forEach() push to array to get count
       // database.ref(`Entries/NumberOfEntries`).update(updates);
     })

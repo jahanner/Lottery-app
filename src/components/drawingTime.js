@@ -3,7 +3,7 @@ import React, { Component } from "react";
 // import "react-dates/lib/css/_datepicker.css";
 import { dispatchSet, watch } from "redux-easy";
 import DateTime from "react-datetime";
-import Modal from "react-responsive-modal";
+// import Modal from "react-responsive-modal";
 import database from "../firebase/firebase.js";
 import moment from "moment";
 

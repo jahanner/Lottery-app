@@ -9,11 +9,13 @@ import moment from "moment";
 
 class StatusPage extends Component {
   render() {
-    const { lotteryDate, prizeDescription, winnerName } = this.props;
+    const { lotteryDate, prizeDescription, winnerName, users } = this.props;
     let time;
     lotteryDate !== "" ? (time = lotteryDate - moment.now()) : (time = "");
+    const winner = users[Math.floor(Math.random() * users.length)];
+    console.log(users);
     console.log(time);
-
+    console.log(winner.name);
     return (
       <div className="App">
         <div>
@@ -41,7 +43,7 @@ class StatusPage extends Component {
         {time && prizeDescription !== "" ? (
           time <= 0 ? (
             <h2 className="Winner">
-              Our winner is {winnerName}! Congratulations, you win a{" "}
+              The winner is {winner.name}! Congratulations, you win a{" "}
               {prizeDescription.toUpperCase()}!!!!
             </h2>
           ) : (
@@ -63,5 +65,6 @@ class StatusPage extends Component {
 export default watch(StatusPage, {
   lotteryDate: "lotteryApp.lotteryDate",
   prizeDescription: "lotteryApp.prizeDescription",
-  winnerName: "lotteryApp.winnerName"
+  winnerName: "lotteryApp.winnerName",
+  users: "lotteryApp.users"
 });

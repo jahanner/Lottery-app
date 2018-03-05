@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { watch } from "redux-easy";
-import database from "../firebase/firebase.js";
 
 const numberEntered = numberOfEntries => {
   if (numberOfEntries === 0) {
