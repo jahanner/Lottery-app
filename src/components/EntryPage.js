@@ -14,7 +14,7 @@ class EntryPage extends Component {
     return (
       <div className="App">
         <div>
-          <header className="App-header">
+          <header className="App-Header">
             <img src={logo} className="App-logo" alt="logo" />
             <div className="title/odds">
               <h1 className="App-title">Welcome to Lottery App</h1>
@@ -29,7 +29,7 @@ class EntryPage extends Component {
             <h2 className="Prize-Description">No prize has been set</h2>
           ) : (
             <h2 className="Prize-Description">
-              You could win a {prizeDescription} on{" "}
+              You could win a <span>{prizeDescription}</span> on{" "}
               {moment(lotteryDate).format("MMM Do")} at{" "}
               {moment(lotteryDate).format("hh:mmA")}!!!
             </h2>

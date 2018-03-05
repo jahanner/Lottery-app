@@ -22,8 +22,8 @@ const Header = () => (
   <div>
     <header>
       <p>{linkTo("/create-app", "Create Lottery")}</p>
-      <p>{linkTo("/status", "Lottery Status")}</p>
       <p>{linkTo("/", "Lottery Entry")}</p>
+      <p>{linkTo("/status", "Lottery Status")}</p>
     </header>
   </div>
 );

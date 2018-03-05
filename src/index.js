@@ -10,7 +10,6 @@ const initialState = {
   lotteryApp: {
     lotteryDate: "",
     prizeDescription: "",
-    winnerName: "",
     nameEmailError: "",
     lotteryError: "",
     numberOfEntries: 0,

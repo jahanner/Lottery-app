@@ -7,8 +7,6 @@ const signIn = users => {
     .auth()
     .signInWithPopup(googleAuthProvider)
     .then(function(result) {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      // const token = result.credential.accessToken;
       // The signed-in user info.
       const user = result.user;
       const name = user.displayName;
@@ -19,10 +17,9 @@ const signIn = users => {
         email: email
       };
       // const avoidDuplicate =
-      //   users.includes(entry) === false
+      //   users.includes(entry.name || entry.email) === false
       //     ? dispatchSet("lotteryApp.users", [...users, entry])
-      //     : users;
-      // ...
+      //     : return users;
       dispatchSet("lotteryApp.users", [...users, entry]);
       database.ref(`Entries/${id}`).set(entry);
       window.location = "/status";
@@ -31,7 +28,6 @@ const signIn = users => {
       //   console.log(user);
       // });
       //TODO: retrieve data, forEach() push to array to get count
-      // database.ref(`Entries/NumberOfEntries`).update(updates);
     })
     .catch(function(error) {
       if (error.code === "auth/account-exists-with-different-credential") {

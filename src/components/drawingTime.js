@@ -82,15 +82,6 @@ class LotterySetUp extends Component {
               className="date"
             />
           </label>
-          {/* <SingleDatePicker
-            date={moment(lotteryDate)}
-            onDateChange={this.onDateChange}
-            focused={calendarFocused}
-            onFocusChange={this.onFocusChange}
-            numberOfMonths={1}
-            displayFormat="MMM Do, YYYY"
-            id="date"
-          /> */}
           <button className="button">Submit</button>
           {/* <Modal
             open={open}

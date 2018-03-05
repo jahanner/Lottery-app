@@ -9,13 +9,12 @@ import moment from "moment";
 
 class StatusPage extends Component {
   render() {
-    const { lotteryDate, prizeDescription, winnerName, users } = this.props;
+    const { lotteryDate, prizeDescription, users } = this.props;
     let time;
     lotteryDate !== "" ? (time = lotteryDate - moment.now()) : (time = "");
     const winner = users[Math.floor(Math.random() * users.length)];
     console.log(users);
     console.log(time);
-    console.log(winner.name);
     return (
       <div className="App">
         <div>
@@ -25,21 +24,15 @@ class StatusPage extends Component {
               <h1 className="App-title">Lottery Status</h1>
               <Odds />
             </div>
-            <Clock deadline={lotteryDate} />
           </header>
         </div>
         <div>
           <Header />
         </div>
-        {/* {prizeDescription === "" ? (
-          <h2 className="Prize-Description">No prize has been set</h2>
-        ) : (
-          <h2 className="Prize-Description">
-            You could win a {prizeDescription} on{" "}
-            {moment(lotteryDate).format("MMM Do")} at{" "}
-            {moment(lotteryDate).format("hh:mmA")}!!!
-          </h2>
-        )} */}
+        <h3 className="Clock">
+          <Clock deadline={lotteryDate} />
+        </h3>
+
         {time && prizeDescription !== "" ? (
           time <= 0 ? (
             <h2 className="Winner">

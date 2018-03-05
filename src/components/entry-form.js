@@ -6,18 +6,6 @@ import { Input, dispatchSet, watch } from "redux-easy";
 import signIn from "./login.js";
 
 class EntryForm extends Component {
-  // state = {
-  //   open: false
-  // };
-  //
-  // onOpenModal = () => {
-  //   this.setState({ open: true });
-  // };
-  //
-  // onCloseModal = () => {
-  //   this.setState({ open: false });
-  //   window.location = "/status";
-  // };
   // handleAddOption = e => {
   //   e.preventDefault();
   //
@@ -55,28 +43,6 @@ class EntryForm extends Component {
         >
           Sign in with Google
         </button>
-        {/* {nameEmailError && <p className="add-option-error">{nameEmailError}</p>}
-        <form className="entry-form-submit" onSubmit={this.handleAddOption}>
-          <label className="user-email" type="email">
-            Email:{" "}
-          </label>
-          <Input type="email" path="lotteryApp.email" />
-          <label className="user-name" type="text">
-            {" "}
-            Name:{" "}
-          </label>
-          <Input type="text" path="lotteryApp.name" />
-          <button className="button" onClick={signIn}>
-            Submit
-          </button>
-          <Modal
-            open={open}
-            onClose={this.onCloseModal}
-            classNames={{ overlay: "custom-overlay", modal: "custom-modal" }}
-          >
-            <h2>You've successfully entered the lottery!</h2>
-          </Modal>
-        </form> */}
       </div>
     );
   }
