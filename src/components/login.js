@@ -22,6 +22,7 @@ const signIn = users => {
       console.log(name, email);
       dispatchSet("lotteryApp.users", [...users, entry]);
       database.ref(`Entries/${id}`).set(entry);
+      window.location = "/status";
       // database
       //   .ref("Entries")
       //   .on("child_added", function(snapshot, prevChildKey) {

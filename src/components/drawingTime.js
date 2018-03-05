@@ -8,18 +8,18 @@ import database from "../firebase/firebase.js";
 import moment from "moment";
 
 class LotterySetUp extends Component {
-  state = {
-    open: false
-  };
-
-  onOpenModal = () => {
-    this.setState({ open: true });
-  };
-
-  onCloseModal = () => {
-    this.setState({ open: false });
-    window.location = "/status";
-  };
+  // state = {
+  //   open: false
+  // };
+  //
+  // onOpenModal = () => {
+  //   this.setState({ open: true });
+  // };
+  //
+  // onCloseModal = () => {
+  //   this.setState({ open: false });
+  //   // window.location = "/status";
+  // };
 
   onDateChange = lotteryDate => {
     dispatchSet("lotteryApp.lotteryDate", lotteryDate.valueOf());
@@ -44,6 +44,8 @@ class LotterySetUp extends Component {
       const date = moment(lotteryDate).format("MMM Do YYYY h:mmA");
       dispatchSet("lotteryApp.lotteryError", "");
       database.ref("LotteryDate").set(date);
+      // this.onOpenModal;
+      window.location = "/status";
     } else {
       dispatchSet(
         "lotteryApp.lotteryError",
@@ -53,7 +55,7 @@ class LotterySetUp extends Component {
   };
 
   render() {
-    const { open } = this.state;
+    // const { open } = this.state;
     const { lotteryApp } = this.props;
     console.log(lotteryApp);
     const { lotteryError, prizeDescription } = lotteryApp;
@@ -89,16 +91,14 @@ class LotterySetUp extends Component {
             displayFormat="MMM Do, YYYY"
             id="date"
           /> */}
-          <button className="button" onClick={this.onOpenModal}>
-            Submit
-          </button>
-          <Modal
+          <button className="button">Submit</button>
+          {/* <Modal
             open={open}
             onClose={this.onCloseModal}
             classNames={{ overlay: "custom-overlay", modal: "custom-modal" }}
           >
             <h2>Lottery date successfully set!</h2>
-          </Modal>
+          </Modal> */}
         </form>
       </div>
     );

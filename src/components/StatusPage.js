@@ -10,7 +10,8 @@ import moment from "moment";
 class StatusPage extends Component {
   render() {
     const { lotteryDate, prizeDescription, winnerName } = this.props;
-    const time = lotteryDate - moment.now();
+    let time;
+    lotteryDate !== "" ? (time = lotteryDate - moment.now()) : (time = "");
     console.log(time);
 
     return (
@@ -28,13 +29,31 @@ class StatusPage extends Component {
         <div>
           <Header />
         </div>
-        {time <= 0 ? (
-          <h2 className="Winner">
-            Our winner is {winnerName}! Congratulations, you win a{" "}
-            {prizeDescription.toUpperCase()}!!!!
-          </h2>
+        {/* {prizeDescription === "" ? (
+          <h2 className="Prize-Description">No prize has been set</h2>
         ) : (
-          <h2>The lottery hasn't been drawn yet, check back soon!</h2>
+          <h2 className="Prize-Description">
+            You could win a {prizeDescription} on{" "}
+            {moment(lotteryDate).format("MMM Do")} at{" "}
+            {moment(lotteryDate).format("hh:mmA")}!!!
+          </h2>
+        )} */}
+        {time && prizeDescription !== "" ? (
+          time <= 0 ? (
+            <h2 className="Winner">
+              Our winner is {winnerName}! Congratulations, you win a{" "}
+              {prizeDescription.toUpperCase()}!!!!
+            </h2>
+          ) : (
+            <h2>
+              The lottery hasn't been drawn yet, check back soon!<br /> You
+              could win a {prizeDescription} on{" "}
+              {moment(lotteryDate).format("MMM Do")} at{" "}
+              {moment(lotteryDate).format("hh:mmA")}!!!
+            </h2>
+          )
+        ) : (
+          <h2>The lottery has not been set up yet</h2>
         )}
       </div>
     );
