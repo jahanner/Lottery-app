@@ -4,17 +4,34 @@ import Clock from "./countdown-timer.js";
 import "../styles/App.css";
 import Header from "./Header.js";
 import Odds from "./odds";
-import { watch } from "redux-easy";
+import { dispatchSet, watch } from "redux-easy";
 import moment from "moment";
+import database from "../firebase/firebase.js";
 
 class StatusPage extends Component {
   render() {
     const { lotteryDate, prizeDescription, users } = this.props;
     let time;
     lotteryDate !== "" ? (time = lotteryDate - moment.now()) : (time = "");
-    const winner = users[Math.floor(Math.random() * users.length)];
+    // const entriesArray = [];
+    // const entries = database.ref("Entries").on("value", function(snapshot) {
+    //   console.log(snapshot.val()); //get data from Firebase
+    //   snapshot.forEach(function(childSnapshot) {
+    //     let childData = childSnapshot.val();
+    //     console.log(childData);
+    //     entriesArray.push(childData.email);//push data to array
+    //   });
+    // });
+    // console.log(entriesArray);
+    const winner = users[Math.floor(Math.random() * users.length)]; //choose random winner
+    if (winner === undefined) {
+      dispatchSet("lotteryApp.winnerName", "");
+    } else {
+      dispatchSet("lotteryApp.winnerName", winner.name);
+    }
     console.log(users);
     console.log(time);
+
     return (
       <div className="App">
         <div>
@@ -36,8 +53,10 @@ class StatusPage extends Component {
         {time && prizeDescription !== "" ? (
           time <= 0 ? (
             <h2 className="Prize-Description">
-              The winner is {winner.name}! Congratulations, you win a{" "}
-              {prizeDescription.toUpperCase()}!!!!
+              <p>
+                The winner is {winner.name}! Congratulations, you win a{" "}
+                <span>{prizeDescription.toUpperCase()}</span>!!!!
+              </p>
             </h2>
           ) : (
             <h2 className="Prize-Description">

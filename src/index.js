@@ -14,7 +14,8 @@ const initialState = {
     lotteryError: "",
     numberOfEntries: 0,
     calendarFocused: false,
-    users: []
+    users: [],
+    winnerName: ""
   }
 };
 

@@ -9,7 +9,7 @@ import { watch } from "redux-easy";
 
 class EntryPage extends Component {
   render() {
-    const { lotteryDate, prizeDescription } = this.props;
+    const { lotteryDate, prizeDescription, winnerName } = this.props;
 
     return (
       <div className="App">
@@ -27,6 +27,12 @@ class EntryPage extends Component {
           <Header />
           {prizeDescription === "" ? (
             <h2 className="Prize-Description">No prize has been set</h2>
+          ) : lotteryDate - moment.now() <= 0 ? (
+            <h2 className="Prize-Description">
+              {winnerName} won a {prizeDescription} on{" "}
+              {moment(lotteryDate).format("MMM Do")} at{" "}
+              {moment(lotteryDate).format("hh:mmA")}!!!{" "}
+            </h2>
           ) : (
             <h2 className="Prize-Description">
               <p>
@@ -46,5 +52,6 @@ class EntryPage extends Component {
 
 export default watch(EntryPage, {
   lotteryDate: "lotteryApp.lotteryDate",
-  prizeDescription: "lotteryApp.prizeDescription"
+  prizeDescription: "lotteryApp.prizeDescription",
+  winnerName: "lotteryApp.winnerName"
 });
