@@ -9,7 +9,7 @@ const numberEntered = (numberOfEntries, lotteryDate) => {
         <h3>No one has entered yet, now is your chance!!!</h3>
       </div>
     );
-  } else if (lotteryDate <= 0) {
+  } else if (lotteryDate <= 0 || lotteryDate === "") {
     return <div />;
   } else {
     return (

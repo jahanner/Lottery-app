@@ -49,7 +49,7 @@ class LotterySetUp extends Component {
       database.ref("PrizeDescription").set(description);
       // this.onOpenModal;
       window.location = "/status";
-    } else if (lotteryDate === "") {
+    } else if (lotteryDate === "" && description) {
       dispatchSet(
         "lotteryApp.lotteryError",
         "You can't set a date in the past fool"
@@ -57,7 +57,7 @@ class LotterySetUp extends Component {
     } else {
       dispatchSet(
         "lotteryApp.lotteryError",
-        "Please provide description and date of lottery"
+        "Please provide description AND date of lottery"
       );
     }
   };

@@ -42,7 +42,7 @@ class StatusPage extends Component {
             <img src={logo} className="App-logo" alt="logo" />
             <div className="title/odds">
               <h1 className="App-title">Lottery Status</h1>
-              <Odds />
+              {lotteryDate != "" ? <Odds /> : ""}
             </div>
           </header>
         </div>
@@ -56,6 +56,7 @@ class StatusPage extends Component {
         {time && prizeDescription !== "" ? (
           time <= 0 ? (
             // (sendEmail(winner.email, "test", "just checking if it works", ""),
+            //TODO: send email to winner
             <h2 className="Prize-Description">
               <p>
                 The winner is {winner.name}! Congratulations, you win a{" "}

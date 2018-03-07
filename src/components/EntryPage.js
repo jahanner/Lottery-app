@@ -18,7 +18,7 @@ class EntryPage extends Component {
             <img src={logo} className="App-logo" alt="logo" />
             <div className="title/odds">
               <h1 className="App-title">Welcome to Lottery App</h1>
-              <Odds />
+              {lotteryDate != "" ? <Odds /> : ""}
             </div>
             <div className="Clock" />
           </header>
