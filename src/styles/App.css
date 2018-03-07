@@ -34,7 +34,12 @@
 .App-intro {
   padding: 5px; }
 
+.links:hover,
+.button:hover {
+  transform: scale(1.1); }
+
 .button {
+  transition: all 0.2s ease-in-out;
   background-color: #106fbe;
   border: none;
   border-bottom: solid 2px #0c548f;
@@ -48,6 +53,7 @@
 .Clock {
   color: #084a92;
   font-weight: bold;
+  font-size: 1.5rem;
   margin-top: 2rem;
   margin-bottom: -1rem; }
 
@@ -71,11 +77,12 @@
   color: white; }
 
 .links {
+  transition: all 0.2s ease-in-out;
   background-color: #106fbe;
   border-bottom: solid 2px #0c548f;
   border-left: solid 2px #0c548f;
-  margin-left: 0.25rem;
-  margin-top: 0.25rem;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
   color: white;
   font-size: 1.25rem;
   cursor: pointer;
