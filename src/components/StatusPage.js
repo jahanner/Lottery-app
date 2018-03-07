@@ -42,7 +42,7 @@ class StatusPage extends Component {
             <img src={logo} className="App-logo" alt="logo" />
             <div className="title/odds">
               <h1 className="App-title">Lottery Status</h1>
-              {lotteryDate != "" ? <Odds /> : ""}
+              {lotteryDate !== "" ? <Odds /> : ""}
             </div>
           </header>
         </div>

@@ -150,7 +150,6 @@
   z-index: 99999 !important;
   background: #fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 2px solid black;
 }
 .rdtOpen .rdtPicker {
   display: block;
@@ -168,12 +167,14 @@
 .rdtPicker table {
   width: 100%;
   margin: 0;
+  // background-color: lighten(forestgreen, 5%);
+  background-color: #106fbe;
+  border: 2px solid black;
 }
 .rdtPicker td,
 .rdtPicker th {
   text-align: center;
   height: 28px;
-  border-top: 1px solid black;
 }
 .rdtPicker td {
   cursor: pointer;
@@ -189,18 +190,21 @@
 }
 
 .rdtPicker td.rdtOld:hover {
-  background: red;
+  background: yellow;
   color: black;
 }
 .rdtPicker td.rdtNew:hover {
-  background: dodgerblue;
+  background: yellow;
   color: black;
+}
+.rdtPicker td.rdtDay {
+  background-color: white;
 }
 .rdtPicker td.rdtOld {
   color: lightgrey;
 }
 .rdtPicker td.rdtNew {
-  color: lightblue;
+  color: lightgrey;
 }
 .rdtPicker td.rdtToday {
   position: relative;
@@ -209,7 +213,7 @@
   content: "";
   display: inline-block;
   border-left: 7px solid transparent;
-  border-bottom: 7px solid #428bca;
+  border-bottom: 7px solid #106fbe;
   border-top-color: rgba(0, 0, 0, 0.2);
   position: absolute;
   bottom: 4px;
@@ -241,7 +245,7 @@
   cursor: not-allowed;
 }
 .rdtPicker th {
-  border-bottom: 1px solid #f9f9f9;
+  border-bottom: 1px solid black;
 }
 .rdtPicker .dow {
   width: 14.2857%;
@@ -250,7 +254,7 @@
 }
 .rdtPicker th.rdtSwitch {
   width: 100px;
-  color: forestgreen;
+  color: black;
 }
 .rdtPicker th.rdtNext,
 .rdtPicker th.rdtPrev {
@@ -279,7 +283,7 @@
   cursor: pointer;
 }
 .rdtPicker thead tr:first-child th:hover {
-  background: #eeeeee;
+  background: yellow;
 }
 
 .rdtPicker tfoot {
@@ -292,7 +296,7 @@
   cursor: pointer;
 }
 .rdtPicker button:hover {
-  background-color: #eee;
+  background-color: yellow;
 }
 
 .rdtPicker thead button {
@@ -308,7 +312,7 @@ td.rdtYear {
 }
 td.rdtMonth:hover,
 td.rdtYear:hover {
-  background: #eee;
+  background: yellow;
 }
 
 .rdtCounters {
@@ -345,7 +349,7 @@ td.rdtYear:hover {
   user-select: none;
 }
 .rdtCounter .rdtBtn:hover {
-  background: #eee;
+  background: yellow;
 }
 .rdtCounter .rdtCount {
   height: 20%;
