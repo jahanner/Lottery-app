@@ -91,6 +91,12 @@
   flex-grow: 1;
   font-size: 1.5rem;
 }
+
+.entry-form-submit p {
+  color: red;
+  font-style: italic;
+}
+
 .date {
   display: flex;
   justify-content: center;
@@ -108,7 +114,7 @@
   border-bottom: solid 2px darken(#106fbe, 10%);
   border-left: solid 2px darken(#106fbe, 10%);
   margin-left: 0.5rem;
-  margin-top: 0.5rem;
+  margin-top: 1.25rem;
   color: white;
   font-size: 1.25rem;
   cursor: pointer;
@@ -124,6 +130,11 @@
 .Prize-Description span {
   color: #f5cf0a;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.status-picture {
+  margin-top: 2rem;
+  border: 2px solid black;
 }
 
 .rdt {

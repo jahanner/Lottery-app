@@ -6,6 +6,8 @@ import Header from "./Header.js";
 import Odds from "./odds";
 import { dispatchSet, watch } from "redux-easy";
 import moment from "moment";
+import { NavLink } from "react-router-dom";
+import Img from "react-image";
 // import database from "../firebase/firebase.js";
 // import sendEmail from "./sendEmail.js";
 
@@ -72,7 +74,15 @@ class StatusPage extends Component {
             </h2>
           )
         ) : (
-          <h2>The lottery has not been set up yet</h2>
+          <h2>
+            <br />
+            No one set up the lottery yet
+            <br />
+            <Img
+              src="https://i.imgflip.com/10wz25.jpg"
+              className="status-picture"
+            />
+          </h2>
         )}
       </div>
     );

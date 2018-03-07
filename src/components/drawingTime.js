@@ -1,6 +1,4 @@
-// import "react-dates/initialize";
 import React, { Component } from "react";
-// import "react-dates/lib/css/_datepicker.css";
 import { dispatchSet, watch } from "redux-easy";
 import DateTime from "react-datetime";
 // import Modal from "react-responsive-modal";
@@ -22,7 +20,11 @@ class LotterySetUp extends Component {
   // };
 
   onDateChange = lotteryDate => {
-    dispatchSet("lotteryApp.lotteryDate", lotteryDate.valueOf());
+    if (lotteryDate > moment.now()) {
+      dispatchSet("lotteryApp.lotteryDate", lotteryDate.valueOf());
+    } else {
+      dispatchSet("lotteryApp.lotteryDate", "");
+    }
   };
 
   onFocusChange = ({ focused }) => {
@@ -47,6 +49,11 @@ class LotterySetUp extends Component {
       database.ref("PrizeDescription").set(description);
       // this.onOpenModal;
       window.location = "/status";
+    } else if (lotteryDate === "") {
+      dispatchSet(
+        "lotteryApp.lotteryError",
+        "You can't set a date in the past fool"
+      );
     } else {
       dispatchSet(
         "lotteryApp.lotteryError",
