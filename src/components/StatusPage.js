@@ -6,7 +6,7 @@ import Header from "./Header.js";
 import Odds from "./odds";
 import { dispatchSet, watch } from "redux-easy";
 import moment from "moment";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import Img from "react-image";
 // import database from "../firebase/firebase.js";
 // import sendEmail from "./sendEmail.js";
@@ -42,7 +42,11 @@ class StatusPage extends Component {
             <img src={logo} className="App-logo" alt="logo" />
             <div className="title/odds">
               <h1 className="App-title">Lottery Status</h1>
-              {lotteryDate !== "" ? <Odds /> : ""}
+              {lotteryDate === "" || lotteryDate - moment.now() < 0 ? (
+                ""
+              ) : (
+                <Odds />
+              )}
             </div>
           </header>
         </div>
@@ -58,10 +62,21 @@ class StatusPage extends Component {
             // (sendEmail(winner.email, "test", "just checking if it works", ""),
             //TODO: send email to winner
             <h2 className="Prize-Description">
-              <p>
-                The winner is {winner.name}! Congratulations, you win a{" "}
-                <span>{prizeDescription.toUpperCase()}</span>!!!!
-              </p>
+              {winner === undefined ? (
+                <p>
+                  No one entered the lottery so no one won!!!
+                  <br />
+                  <Img
+                    src="https://i.imgflip.com/10wz25.jpg"
+                    className="status-picture"
+                  />
+                </p>
+              ) : (
+                <p>
+                  The winner is <span>{winner.name}</span>! Congratulations, you
+                  won a <span>{prizeDescription.toUpperCase()}</span>!!!!
+                </p>
+              )}
             </h2>
           ) : (
             <h2 className="Prize-Description">

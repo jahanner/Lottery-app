@@ -6,6 +6,7 @@ import Header from "./Header.js";
 import moment from "moment";
 import Odds from "./odds";
 import { watch } from "redux-easy";
+import Img from "react-image";
 
 class EntryPage extends Component {
   render() {
@@ -18,7 +19,11 @@ class EntryPage extends Component {
             <img src={logo} className="App-logo" alt="logo" />
             <div className="title/odds">
               <h1 className="App-title">Welcome to Lottery App</h1>
-              {lotteryDate !== "" ? <Odds /> : ""}
+              {lotteryDate === "" || lotteryDate - moment.now() < 0 ? (
+                ""
+              ) : (
+                <Odds />
+              )}
             </div>
             <div className="Clock" />
           </header>
@@ -29,9 +34,24 @@ class EntryPage extends Component {
             <h2 className="Prize-Description">No prize has been set yet</h2>
           ) : lotteryDate - moment.now() <= 0 ? (
             <h2 className="Prize-Description">
-              {winnerName} won a {prizeDescription} on{" "}
-              {moment(lotteryDate).format("MMM Do")} at{" "}
-              {moment(lotteryDate).format("hh:mmA")}!!!{" "}
+              {winnerName === "" ? (
+                <p>
+                  No one entered the lottery so no one won!!!
+                  <br />
+                  <Img
+                    src="https://i.imgflip.com/10wz25.jpg"
+                    className="status-picture"
+                  />
+                </p>
+              ) : (
+                <p>
+                  {" "}
+                  <span>{winnerName}</span> won a{" "}
+                  <span>{prizeDescription}</span> on{" "}
+                  {moment(lotteryDate).format("MMM Do")} at{" "}
+                  {moment(lotteryDate).format("hh:mmA")}!!!{" "}
+                </p>
+              )}
             </h2>
           ) : (
             <h2 className="Prize-Description">

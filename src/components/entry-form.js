@@ -29,7 +29,7 @@ class EntryForm extends Component {
 
   render() {
     // const { open } = this.state;
-    const { users, lotteryDate } = this.props;
+    const { users, lotteryDate, winnerName } = this.props;
     console.log(this.props);
     return (
       <div>
@@ -38,6 +38,8 @@ class EntryForm extends Component {
           onClick={() => {
             if (lotteryDate === "") {
               window.alert("Can't enter until lottery has been created");
+            } else if (winnerName === "") {
+              window.alert("Can't enter after the drawing time has passed");
             } else signIn(users);
           }}
         >
@@ -51,5 +53,6 @@ class EntryForm extends Component {
 export default watch(EntryForm, {
   users: "lotteryApp.users",
   numberOfEntries: "lotteryApp.numberOfEntries",
-  lotteryDate: "lotteryApp.lotteryDate"
+  lotteryDate: "lotteryApp.lotteryDate",
+  winnerName: "lotteryApp.winnerName"
 });
