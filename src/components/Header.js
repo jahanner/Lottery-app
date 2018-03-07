@@ -6,13 +6,18 @@ const linkTo = (route, text) => {
   /*quick function to set up links*/
   if (route === "/" || route === "/portfolio") {
     return (
-      <NavLink to={route} activeClassName="is-active" exact={true}>
+      <NavLink
+        to={route}
+        className="link"
+        activeClassName="is-active"
+        exact={true}
+      >
         {text}
       </NavLink>
     );
   } else {
     return (
-      <NavLink to={route} activeClassName="is-active">
+      <NavLink to={route} className="link" activeClassName="is-active">
         {text}
       </NavLink>
     );
@@ -28,10 +33,14 @@ class Header extends Component {
           {lotteryDate ? (
             <p />
           ) : (
-            <p>{linkTo("/create-app", "Create Lottery")}</p>
+            <button className="links">
+              {linkTo("/create-app", "Create Lottery")}
+            </button>
           )}
-          <p>{linkTo("/", "Lottery Entry")}</p>
-          <p>{linkTo("/status", "Lottery Status")}</p>
+          <button className="links">{linkTo("/", "Lottery Entry")}</button>
+          <button className="links">
+            {linkTo("/status", "Lottery Status")}
+          </button>
         </header>
       </div>
     );

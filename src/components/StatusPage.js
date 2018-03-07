@@ -6,8 +6,8 @@ import Header from "./Header.js";
 import Odds from "./odds";
 import { dispatchSet, watch } from "redux-easy";
 import moment from "moment";
-import database from "../firebase/firebase.js";
-import sendEmail from "./sendEmail.js";
+// import database from "../firebase/firebase.js";
+// import sendEmail from "./sendEmail.js";
 
 class StatusPage extends Component {
   render() {
@@ -53,15 +53,13 @@ class StatusPage extends Component {
 
         {time && prizeDescription !== "" ? (
           time <= 0 ? (
-            (sendEmail(winner.email, "test", "just checking if it works", ""),
-            (
-              <h2 className="Prize-Description">
-                <p>
-                  The winner is {winner.name}! Congratulations, you win a{" "}
-                  <span>{prizeDescription.toUpperCase()}</span>!!!!
-                </p>
-              </h2>
-            ))
+            // (sendEmail(winner.email, "test", "just checking if it works", ""),
+            <h2 className="Prize-Description">
+              <p>
+                The winner is {winner.name}! Congratulations, you win a{" "}
+                <span>{prizeDescription.toUpperCase()}</span>!!!!
+              </p>
+            </h2>
           ) : (
             <h2 className="Prize-Description">
               <p>

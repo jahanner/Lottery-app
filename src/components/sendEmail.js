@@ -18,6 +18,9 @@ const sendEmail = (
   let promise = Promise.resolve();
 
   const options = {
+    // host: "smtp.gmail.com",
+    // port: 465,
+    // secure: true,
     service: "gmail",
     auth: {
       user: "hannerj@objectcomputing.com",

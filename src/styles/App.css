@@ -65,6 +65,20 @@
   justify-content: center;
   padding: 1rem; }
 
+.link {
+  text-decoration: none;
+  color: white; }
+
+.links {
+  background-color: #106fbe;
+  border-bottom: solid 2px #0c548f;
+  border-left: solid 2px #0c548f;
+  margin-left: 0.25rem;
+  margin-top: 0.25rem;
+  color: white;
+  font-size: 1.25rem;
+  cursor: pointer; }
+
 .Prize-Description {
   padding: 0 0 20px;
   border-bottom: 1px solid black;

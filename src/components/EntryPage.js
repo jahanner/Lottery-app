@@ -26,7 +26,7 @@ class EntryPage extends Component {
         <div>
           <Header />
           {prizeDescription === "" ? (
-            <h2 className="Prize-Description">No prize has been set</h2>
+            <h2 className="Prize-Description">No prize has been set yet</h2>
           ) : lotteryDate - moment.now() <= 0 ? (
             <h2 className="Prize-Description">
               {winnerName} won a {prizeDescription} on{" "}
