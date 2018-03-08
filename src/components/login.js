@@ -16,10 +16,19 @@ const signIn = users => {
         name: name,
         email: email
       };
-      // const avoidDuplicate =
-      //   users.includes(entry.name || entry.email) === false
-      //     ? dispatchSet("lotteryApp.users", [...users, entry])
-      //     : return users;
+      // const { emails } = this.props;
+      // dispatchSet("lotteryApp.emails", email);
+
+      //TODO: convert to class so I can avoid duplicate emails
+
+      // emails.includes(!entry.email)
+      //   ? dispatchSet("lotteryApp.users", [...users, entry])(
+      //       dispatchSet("lotteryApp.emails", email)
+      //     )(database.ref(`Entries/${id}`).set(entry))(
+      //       (window.location = "/status")
+      //     )
+      //   : window.alert("This email has already been entered");
+
       dispatchSet("lotteryApp.users", [...users, entry]);
       database.ref(`Entries/${id}`).set(entry);
       window.location = "/status";
@@ -27,14 +36,18 @@ const signIn = users => {
       //   const user = snapshot.val();
       //   console.log(user);
       // });
-      //TODO: retrieve data, forEach() push to array to get count
     })
     .catch(function(error) {
       if (error.code === "auth/account-exists-with-different-credential") {
         window.alert("That email has already been taken");
       }
       console.log(error);
+      console.log(users.email);
     });
 };
 
 export default signIn;
+// export default watch(signIn, {
+//   users: "lotteryApp.users",
+//   emails: "lotteryApp.emails"
+// });

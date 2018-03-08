@@ -10,10 +10,10 @@ function sendHtmlEmail(
 }
 
 const sendEmail = (
-  to: string,
-  subject: string,
-  text: ?string,
-  html?: string
+  to: "hannerj@objectcomputing.com",
+  subject: "test",
+  text: "test",
+  html?: ""
 ): Promise<void> => {
   let promise = Promise.resolve();
 
@@ -46,5 +46,6 @@ const sendEmail = (
   return promise;
 };
 
+sendEmail();
 // module.exports = { sendEmail, sendHtmlEmail };
 export default sendEmail;

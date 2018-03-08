@@ -6,9 +6,7 @@ import Header from "./Header.js";
 import Odds from "./odds";
 import { dispatchSet, watch } from "redux-easy";
 import moment from "moment";
-// import { NavLink } from "react-router-dom";
 import Img from "react-image";
-// import database from "../firebase/firebase.js";
 // import sendEmail from "./sendEmail.js";
 
 class StatusPage extends Component {
@@ -61,7 +59,7 @@ class StatusPage extends Component {
           time <= 0 ? (
             // (sendEmail(winner.email, "test", "just checking if it works", ""),
             //TODO: send email to winner
-            <h2 className="Prize-Description">
+            <h2 className="statusDescription">
               {winner === undefined ? (
                 <p>
                   No one entered the lottery so no one won!!!
@@ -79,7 +77,7 @@ class StatusPage extends Component {
               )}
             </h2>
           ) : (
-            <h2 className="Prize-Description">
+            <h2 className="statusDescription">
               <p>
                 {" "}
                 The lottery hasn't been drawn yet, check back soon!<br /> You

@@ -18,7 +18,7 @@ class EntryPage extends Component {
           <header className="App-Header">
             <img src={logo} className="App-logo" alt="logo" />
             <div className="title/odds">
-              <h1 className="App-title">Welcome to Lottery App</h1>
+              <h1 className="App-title">Welcome to the Lottery App</h1>
               {lotteryDate === "" || lotteryDate - moment.now() < 0 ? (
                 ""
               ) : (

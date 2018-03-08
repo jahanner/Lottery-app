@@ -6,30 +6,8 @@ import moment from "moment";
 import signIn from "./login.js";
 
 class EntryForm extends Component {
-  // handleAddOption = e => {
-  //   e.preventDefault();
-  //
-  //   const { email, name, numberOfEntries } = this.props;
-  //   const now = moment().format("MMM Do YYYY hh:mm");
-  //   const contestant = {
-  //     name: name,
-  //     email: email,
-  //     timeEntered: now
-  //   };
-  //
-  //   if (!name || !email) {
-  //     dispatchSet("lotteryApp.nameEmailError", "Enter a name and email fool");
-  //   } else {
-  //     dispatchSet("lotteryApp.nameEmailError", "");
-  //     dispatchSet("lotteryApp.numberOfEntries", numberOfEntries + 1);
-  //     database.ref(`NumberOfEntries`).set(numberOfEntries + 1);
-  //     database.ref(`Entries`).push(contestant);
-  //   }
-  // };
-
   render() {
-    // const { open } = this.state;
-    const { users, lotteryDate, winnerName } = this.props;
+    const { users, lotteryDate } = this.props;
     console.log(this.props);
     return (
       <div>
@@ -53,6 +31,5 @@ class EntryForm extends Component {
 export default watch(EntryForm, {
   users: "lotteryApp.users",
   numberOfEntries: "lotteryApp.numberOfEntries",
-  lotteryDate: "lotteryApp.lotteryDate",
-  winnerName: "lotteryApp.winnerName"
+  lotteryDate: "lotteryApp.lotteryDate"
 });

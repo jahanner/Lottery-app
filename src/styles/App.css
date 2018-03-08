@@ -7,7 +7,7 @@
 
 .App-header {
   background-color: black;
-  height: 100px;
+  height: 130px;
   padding: 20px;
   color: white;
   display: flex;
@@ -42,8 +42,8 @@
   transition: all 0.2s ease-in-out;
   background-color: #106fbe;
   border: none;
-  border-bottom: solid 2px #0c548f;
-  border-left: solid 2px #0c548f;
+  border-bottom: solid 2px #0a4677;
+  border-left: solid 2px #0a4677;
   color: white;
   margin-left: 1rem;
   font-size: 1.5rem;
@@ -51,11 +51,12 @@
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; }
 
 .Clock {
-  color: #084a92;
+  color: #106fbe;
   font-weight: bold;
   font-size: 1.5rem;
   margin-top: 2rem;
-  margin-bottom: -1rem; }
+  margin-bottom: -1rem;
+  padding-bottom: 1rem; }
 
 @keyframes App-logo-spin {
   from {
@@ -65,7 +66,8 @@
 
 .entry-form-submit {
   flex-grow: 1;
-  font-size: 1.5rem; }
+  font-size: 1.5rem;
+  padding-top: 1.5rem; }
 
 .entry-form-submit p {
   color: red;
@@ -74,7 +76,8 @@
 .date {
   display: flex;
   justify-content: center;
-  padding: 1rem; }
+  padding: 1rem;
+  padding-left: 3rem; }
 
 .link {
   text-decoration: none;
@@ -83,21 +86,28 @@
 .links {
   transition: all 0.2s ease-in-out;
   background-color: #106fbe;
-  border-bottom: solid 2px #0c548f;
-  border-left: solid 2px #0c548f;
+  border-bottom: solid 2px #0a4677;
+  border-left: solid 2px #0a4677;
   margin-left: 0.5rem;
-  margin-top: 1.25rem;
+  margin-top: 2.5rem;
   color: white;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   cursor: pointer;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; }
 
+.statusDescription {
+  padding: 1.5rem 0 2.5rem;
+  border-top: 1px solid black;
+  display: flex;
+  justify-content: center; }
+
 .Prize-Description {
-  padding: 0 0 20px;
+  padding: 1.5rem 0 2.5rem;
   border-bottom: 1px solid black;
   display: flex;
   justify-content: center; }
 
+.statusDescription span,
 .Prize-Description span {
   color: #f5cf0a;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; }
@@ -113,12 +123,11 @@
   display: none;
   position: absolute;
   width: 250px;
-  padding: 4px;
-  margin-top: 2rem;
+  margin-top: -1.25rem;
+  margin-bottom: 5rem;
   margin-left: 10rem;
   z-index: 99999 !important;
-  background: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
+  background: #fff; }
 
 .rdtOpen .rdtPicker {
   display: block; }
@@ -129,13 +138,14 @@
 
 .rdtPicker .rdtTimeToggle {
   text-align: center;
-  border: 2px solid black; }
+  border: 3px solid black;
+  background-color: white; }
 
 .rdtPicker table {
   width: 100%;
-  margin: 0;
   background-color: #106fbe;
-  border: 2px solid black; }
+  border: 3px solid black;
+  padding: 0.25rem 0.25rem 0.25rem 0.25rem; }
 
 .rdtPicker td,
 .rdtPicker th {
@@ -144,7 +154,7 @@
 
 .rdtPicker td {
   cursor: pointer;
-  border: 1px solid black; }
+  border: 2px solid black; }
 
 .rdtPicker td.rdtDay:hover,
 .rdtPicker td.rdtHour:hover,
@@ -209,7 +219,7 @@
   cursor: not-allowed; }
 
 .rdtPicker th {
-  border-bottom: 1px solid black; }
+  border-bottom: 3px solid black; }
 
 .rdtPicker .dow {
   width: 14.2857%;
