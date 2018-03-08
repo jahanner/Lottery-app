@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { watch } from "redux-easy";
 // import database from "../firebase/firebase.js";
-// import moment from "moment";
+import moment from "moment";
 // import Modal from "react-responsive-modal";
 import signIn from "./login.js";
 
@@ -38,7 +38,7 @@ class EntryForm extends Component {
           onClick={() => {
             if (lotteryDate === "") {
               window.alert("Can't enter until lottery has been created");
-            } else if (winnerName === "") {
+            } else if (lotteryDate - moment.now() < 0) {
               window.alert("Can't enter after the drawing time has passed");
             } else signIn(users);
           }}
