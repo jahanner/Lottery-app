@@ -19,7 +19,7 @@ const signIn = users => {
       // const { emails } = this.props;
       // dispatchSet("lotteryApp.emails", email);
 
-      //TODO: convert to class so I can avoid duplicate emails
+      //TODO: convert to class, avoid duplicate emails
 
       // emails.includes(!entry.email)
       //   ? dispatchSet("lotteryApp.users", [...users, entry])(
