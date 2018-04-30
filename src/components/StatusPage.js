@@ -32,7 +32,6 @@ class StatusPage extends Component {
     }
     console.log(users);
     console.log(time);
-
     return (
       <div className="App">
         <div>
